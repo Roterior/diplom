@@ -30,8 +30,7 @@ namespace diplom.src.entity
             this.paymentValue = paymentValue;
         }
 
-        [Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid id { get; set; }
 
         [Column(name: "client_id")]

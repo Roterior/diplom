@@ -17,25 +17,26 @@ namespace diplom.src.service.impl
 
         private static CustomerService customerService = new CustomerServiceImpl();
 
-        private MainContext mainContext;
+        private ClientContext context;
 
         public CustomerServiceImpl()
         {
-            mainContext = new MainContext();
+            context = new ClientContext();
         }
 
         public Client create(Client entity)
         {
-            entity = setFullAddress(entity);
-            mainContext.Customers.Add(entity);
-            mainContext.SaveChanges();
+            //entity = setFullAddress(entity);
+            
+            context.Clients.Add(entity);
+            context.SaveChanges();
             return entity;
         }
 
         public Client findById(Guid id)
         {
-            mainContext = new MainContext();
-            Client customer = mainContext.Customers
+            context = new ClientContext();
+            Client customer = context.Clients
                 //.Include(c => c.address)
                 //.Include(c => c.orders)
                 .FirstOrDefault(c => c.id.Equals(id));
@@ -54,7 +55,7 @@ namespace diplom.src.service.impl
         public Client update(Guid id, Client entity)
         {
             entity.id = id;
-            mainContext.SaveChanges();
+            context.SaveChanges();
             return entity;
         }
 
@@ -62,22 +63,21 @@ namespace diplom.src.service.impl
         {
             //Location location = customer.address;
             //customer.fullAddress = String.Format("{0}, г. {1}, р-н {2}, ул. {3}", location.country, location.city,
-                //location.district, location.street);
+            //    location.district, location.street);
             return customer;
         }
 
-        public Client findByInn(int inn)
-        {
-            Client customer = mainContext.Customers
-                //.Include(c => c.address)
-                //.Include(c => c.orders)
+        public Client findByInn(int inn) {
+            Client client = context.Clients
+                .Include(c => c.orders)
                 .Where(c => c.inn.Equals(inn))
                 .FirstOrDefault();
-            if (customer == null)
-            {
+            if (client == null) {
                 throw new EntityNotFoundException(String.Format("Customer with required INN not found, {0}", inn));
             }
-            return customer;
+            return client;
         }
+
     }
+
 }
