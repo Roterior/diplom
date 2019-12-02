@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace diplom.src.service
 {
-    interface CustomerService : CrudService<Client, Guid>
+    interface IClientService : CrudService<Client, Guid>
     {
         Client findByInn(int inn);
+
     }
 }

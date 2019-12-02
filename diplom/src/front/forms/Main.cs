@@ -39,18 +39,18 @@ namespace diplom.src.forms
         {
             try
             {
-/*                label1.Text = Prefix.COUNTRY.GetDescription() + customer.address.country;
-                label2.Text = Prefix.CITY.GetDescription() + customer.address.city;
-                label3.Text = Prefix.DISTRICT.GetDescription() + customer.address.district;
-                label4.Text = Prefix.STREET.GetDescription() + customer.address.street;
-                label5.Text = Prefix.INN.GetDescription() + customer.inn;
-                label6.Text = Prefix.KPP.GetDescription() + customer.kpp;*/
+                //label1.Text = Prefix.COUNTRY.GetDescription() + customer.address.country;
+                //label2.Text = Prefix.CITY.GetDescription() + customer.address.city;
+                //label3.Text = Prefix.DISTRICT.GetDescription() + customer.address.district;
+                //label4.Text = Prefix.STREET.GetDescription() + customer.address.street;
+                //label5.Text = Prefix.INN.GetDescription() + customer.inn;
+                //label6.Text = Prefix.KPP.GetDescription() + customer.kpp;
 
                 label1.Text = Prefix.COUNTRY.GetDescription() + customer.address;
                 label2.Text = Prefix.CITY.GetDescription() + customer.address;
                 label3.Text = Prefix.DISTRICT.GetDescription() + customer.address;
                 label4.Text = Prefix.STREET.GetDescription() + customer.address;
-                label5.Text = Prefix.INN.GetDescription() + customer.address;
+                label5.Text = Prefix.INN.GetDescription() + customer.inn;
                 label6.Text = Prefix.KPP.GetDescription() + customer.address;
 
                 for (int i = 0; i < tabControl1.TabPages.Count; i++)
@@ -140,7 +140,7 @@ namespace diplom.src.forms
                 Order order = new Order(currentCustomer.id, textBox1.Text,
                     DateTimeOffset.Now, Convert.ToDecimal(textBox2.Text));
                 service.create(order);
-                CustomerService customerService = CustomerServiceImpl.GetService();
+                IClientService customerService = CustomerServiceImpl.GetService();
                 Client customer = customerService.findById(currentCustomer.id);
                 updateState(customer);
             }

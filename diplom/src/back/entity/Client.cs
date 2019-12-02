@@ -14,7 +14,8 @@ namespace diplom.src.entity
 
         public Client() {}
 
-        public Client(int inn, string kpp, Location location) {
+        public Client(int inn, String address, Location location) {
+            this.address = address;
             this.inn = inn;
         }
 
@@ -36,7 +37,7 @@ namespace diplom.src.entity
 
         public int passportSeries { get; set; }
 
-        [ForeignKey(name: "customerId")] public virtual List<Order> orders { get; set; }
+        [ForeignKey(name: "clientId")] public virtual List<Order> orders { get; set; }
 
     }
 

@@ -14,7 +14,7 @@ namespace diplom.src.forms
     public partial class findCustomer : Form
     {
 
-        private readonly CustomerService customerService = CustomerServiceImpl.GetService();
+        private readonly IClientService customerService = CustomerServiceImpl.GetService();
         private Main main;
 
         public findCustomer()

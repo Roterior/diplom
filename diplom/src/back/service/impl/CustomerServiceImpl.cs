@@ -12,10 +12,10 @@ using System.Data.Entity.Infrastructure;
 
 namespace diplom.src.service.impl
 {
-    class CustomerServiceImpl : CustomerService
+    class CustomerServiceImpl : IClientService
     {
 
-        private static CustomerService customerService = new CustomerServiceImpl();
+        private static IClientService customerService = new CustomerServiceImpl();
 
         private ClientContext context;
 
@@ -47,7 +47,7 @@ namespace diplom.src.service.impl
             return customer;
         }
 
-        public static CustomerService GetService()
+        public static IClientService GetService()
         {
             return customerService;
         }

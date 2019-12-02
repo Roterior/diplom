@@ -52,10 +52,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -77,46 +77,49 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\context\ClientContext.cs" />
-    <Compile Include="src\context\OrderContext.cs" />
+    <Compile Include="src\back\entity\Car.cs" />
+    <Compile Include="src\back\entity\ClientCar.cs" />
+    <Compile Include="src\back\entity\NewCar.cs" />
+    <Compile Include="src\front\context\ClientContext.cs" />
+    <Compile Include="src\front\context\OrderContext.cs" />
     <Compile Include="src\data\interfaces\CrudService.cs" />
     <Compile Include="src\data\classes\Location.cs" />
     <Compile Include="src\data\exception\EntityNotFoundException.cs" />
     <Compile Include="src\data\Prefix.cs" />
-    <Compile Include="src\entity\Client.cs" />
+    <Compile Include="src\back\entity\Client.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\entity\Item.cs" />
-    <Compile Include="src\entity\Order.cs" />
-    <Compile Include="src\entity\Payment.cs" />
-    <Compile Include="src\forms\createCustomer.cs">
+    <Compile Include="src\back\entity\Item.cs" />
+    <Compile Include="src\back\entity\Order.cs" />
+    <Compile Include="src\back\entity\Payment.cs" />
+    <Compile Include="src\front\forms\createCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\forms\createCustomer.Designer.cs">
+    <Compile Include="src\front\forms\createCustomer.Designer.cs">
       <DependentUpon>createCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\forms\findCustomer.cs">
+    <Compile Include="src\front\forms\findCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\forms\findCustomer.Designer.cs">
+    <Compile Include="src\front\forms\findCustomer.Designer.cs">
       <DependentUpon>findCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\forms\Main.cs">
+    <Compile Include="src\front\forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\forms\Main.Designer.cs">
+    <Compile Include="src\front\forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\forms\showOrderItems.cs">
+    <Compile Include="src\front\forms\showOrderItems.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\forms\showOrderItems.Designer.cs">
+    <Compile Include="src\front\forms\showOrderItems.Designer.cs">
       <DependentUpon>showOrderItems.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\service\CustomerService.cs" />
-    <Compile Include="src\service\impl\CustomerServiceImpl.cs" />
-    <Compile Include="src\service\impl\OrderServiceImpl.cs" />
-    <Compile Include="src\service\OrderService.cs" />
+    <Compile Include="src\back\service\IClientService.cs" />
+    <Compile Include="src\back\service\impl\CustomerServiceImpl.cs" />
+    <Compile Include="src\back\service\impl\OrderServiceImpl.cs" />
+    <Compile Include="src\back\service\OrderService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -127,16 +130,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="src\forms\createCustomer.resx">
+    <EmbeddedResource Include="src\front\forms\createCustomer.resx">
       <DependentUpon>createCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\forms\findCustomer.resx">
+    <EmbeddedResource Include="src\front\forms\findCustomer.resx">
       <DependentUpon>findCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\forms\Main.resx">
+    <EmbeddedResource Include="src\front\forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\forms\showOrderItems.resx">
+    <EmbeddedResource Include="src\front\forms\showOrderItems.resx">
       <DependentUpon>showOrderItems.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".gitignore" />

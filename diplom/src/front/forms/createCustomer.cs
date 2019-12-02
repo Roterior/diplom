@@ -12,31 +12,29 @@ using System.Windows.Forms;
 using diplom.src.service;
 using diplom.src.service.impl;
 
-namespace diplom.src.forms
-{
-    public partial class createCustomer : Form
-    {
+namespace diplom.src.forms {
 
-        private readonly CustomerService customerService = CustomerServiceImpl.GetService();
+    public partial class createCustomer : Form {
+
+        private readonly IClientService customerService = CustomerServiceImpl.GetService();
         private Main main;
 
-        public createCustomer()
-        {
+        public createCustomer() {
             InitializeComponent();
         }
 
-        public createCustomer(Main main): this()
-        {
+        public createCustomer(Main main): this() {
             this.main = main;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
+        private void Button1_Click(object sender, EventArgs e) {
             Client customer = customerService.create(new Client(int.Parse(textBox1.Text), textBox2.Text,
                     new Location(textBox3.Text, textBox4.Text, textBox6.Text, textBox5.Text)));
             Close();
 
             main.updateState(customer);
         }
+
     }
+
 }

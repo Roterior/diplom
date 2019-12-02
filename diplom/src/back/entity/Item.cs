@@ -6,17 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace diplom.src.entity
-{
-    //[Table(name: "item_t")]
-    public class Item
-    {
+namespace diplom.src.entity {
 
-        //[Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid id { get; set; }
+    [Table(name: "item_t")]
+    public class Item {
 
-        //[Column(name: "order_id")]
+        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
+
         public Guid orderId { get; set; }
 
         public String name { get; set; }
@@ -25,9 +21,8 @@ namespace diplom.src.entity
 
         public int? count { get; set; }
 
-        //[Column(name: "total_cost")]
         public Decimal? totalCost { get; set; }
 
-
     }
+
 }
