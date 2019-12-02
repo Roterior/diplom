@@ -16,9 +16,11 @@ namespace diplom.src.back.entity {
 
         [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
 
-        [ForeignKey(name:"id")] public Client clientId { get; set; }
+        public string status { get; set; }
 
         public string description { get; set; }
+
+        [ForeignKey(name:"id")] public Client clientId { get; set; }
 
     }
 

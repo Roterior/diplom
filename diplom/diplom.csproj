@@ -79,30 +79,37 @@
   <ItemGroup>
     <Compile Include="src\back\entity\Car.cs" />
     <Compile Include="src\back\entity\ClientCar.cs" />
+    <Compile Include="src\back\entity\FilterClient.cs" />
     <Compile Include="src\back\entity\NewCar.cs" />
     <Compile Include="src\front\context\ClientContext.cs" />
     <Compile Include="src\front\context\OrderContext.cs" />
-    <Compile Include="src\data\interfaces\CrudService.cs" />
-    <Compile Include="src\data\classes\Location.cs" />
-    <Compile Include="src\data\exception\EntityNotFoundException.cs" />
-    <Compile Include="src\data\Prefix.cs" />
+    <Compile Include="src\back\data\interfaces\CrudService.cs" />
+    <Compile Include="src\back\data\classes\Location.cs" />
+    <Compile Include="src\back\data\exception\EntityNotFoundException.cs" />
+    <Compile Include="src\back\data\Prefix.cs" />
     <Compile Include="src\back\entity\Client.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\back\entity\Item.cs" />
     <Compile Include="src\back\entity\Order.cs" />
     <Compile Include="src\back\entity\Payment.cs" />
-    <Compile Include="src\front\forms\createCustomer.cs">
+    <Compile Include="src\front\forms\CreateClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\front\forms\createCustomer.Designer.cs">
-      <DependentUpon>createCustomer.cs</DependentUpon>
+    <Compile Include="src\front\forms\CreateClient.Designer.cs">
+      <DependentUpon>CreateClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\front\forms\findCustomer.cs">
+    <Compile Include="src\front\forms\CreateOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\front\forms\findCustomer.Designer.cs">
-      <DependentUpon>findCustomer.cs</DependentUpon>
+    <Compile Include="src\front\forms\CreateOrder.Designer.cs">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\front\forms\FindClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\front\forms\FindClient.Designer.cs">
+      <DependentUpon>FindClient.cs</DependentUpon>
     </Compile>
     <Compile Include="src\front\forms\Main.cs">
       <SubType>Form</SubType>
@@ -117,7 +124,7 @@
       <DependentUpon>showOrderItems.cs</DependentUpon>
     </Compile>
     <Compile Include="src\back\service\IClientService.cs" />
-    <Compile Include="src\back\service\impl\CustomerServiceImpl.cs" />
+    <Compile Include="src\back\service\impl\ClientServiceImpl.cs" />
     <Compile Include="src\back\service\impl\OrderServiceImpl.cs" />
     <Compile Include="src\back\service\OrderService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -130,11 +137,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="src\front\forms\createCustomer.resx">
-      <DependentUpon>createCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="src\front\forms\CreateClient.resx">
+      <DependentUpon>CreateClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\front\forms\findCustomer.resx">
-      <DependentUpon>findCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="src\front\forms\CreateOrder.resx">
+      <DependentUpon>CreateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\front\forms\FindClient.resx">
+      <DependentUpon>FindClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\front\forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

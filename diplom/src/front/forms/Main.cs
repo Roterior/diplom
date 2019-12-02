@@ -12,55 +12,40 @@ using System.Data.Entity;
 using diplom.src.data;
 using diplom.src.service;
 using diplom.src.service.impl;
+using diplom.src.front.forms;
 
-namespace diplom.src.forms
-{
-    public partial class Main
-    {
+namespace diplom.src.forms {
+
+    public partial class Main {
 
         private static Client currentCustomer = null;
         private static Order currentOrderInfo = null;
 
-        public Main()
-        {
+        public Main() {
             InitializeComponent();
         }
 
-        private void Main_Load(object sender, EventArgs e)
-        {
+        private void Main_Load(object sender, EventArgs e) {}
+
+        private void ToolStripButton1_Click(object sender, EventArgs e) {
+            new CreateClient(this).Show();
         }
 
-        private void ToolStripButton1_Click(object sender, EventArgs e)
-        {
-            new createCustomer(this).Show();
-        }
+        public void updateState(Client customer) {
+            try {
+                fname.Text = Prefix.FNAME.GetDescription() + customer.firstName;
+                address.Text = Prefix.ADDRESS.GetDescription() + customer.address;
+                mname.Text = Prefix.MNAME.GetDescription() + customer.middleName;
+                phone.Text = Prefix.PHONE.GetDescription() + customer.phone;
+                lname.Text = Prefix.LNAME.GetDescription() + customer.lastName;
+                inn.Text = Prefix.INN.GetDescription() + customer.inn;
 
-        public void updateState(Client customer)
-        {
-            try
-            {
-                //label1.Text = Prefix.COUNTRY.GetDescription() + customer.address.country;
-                //label2.Text = Prefix.CITY.GetDescription() + customer.address.city;
-                //label3.Text = Prefix.DISTRICT.GetDescription() + customer.address.district;
-                //label4.Text = Prefix.STREET.GetDescription() + customer.address.street;
-                //label5.Text = Prefix.INN.GetDescription() + customer.inn;
-                //label6.Text = Prefix.KPP.GetDescription() + customer.kpp;
-
-                label1.Text = Prefix.COUNTRY.GetDescription() + customer.address;
-                label2.Text = Prefix.CITY.GetDescription() + customer.address;
-                label3.Text = Prefix.DISTRICT.GetDescription() + customer.address;
-                label4.Text = Prefix.STREET.GetDescription() + customer.address;
-                label5.Text = Prefix.INN.GetDescription() + customer.inn;
-                label6.Text = Prefix.KPP.GetDescription() + customer.address;
-
-                for (int i = 0; i < tabControl1.TabPages.Count; i++)
-                {
+                for (int i = 0; i < tabControl1.TabPages.Count; i++) {
                     tabControl1.TabPages.Remove(tabControl1.TabPages[i]);
                 }
                 int pages = customer.orders.Count / 8 + 1;
                 List<TabPage> tabPages = new List<TabPage>(pages);
-                for (int i = 0; i < pages; i++)
-                {
+                for (int i = 0; i < pages; i++) {
                     TabPage tabPage = new TabPage((i + 1).ToString());
                     DataGridView dataGrid = new DataGridView();
                     dataGrid.BorderStyle = BorderStyle.None;
@@ -121,7 +106,6 @@ namespace diplom.src.forms
         private void updateOrderInfo(Order order)
         {
             textBox3.Text = order.description;
-            label9.Text = "Номер: " + order.id.ToString();
             label10.Text = "Дата создания: " + String.Format("{0:dd/MM/yyyy}", order.timestamp.GetValueOrDefault());
             label12.Text = "Время создания: " + String.Format("{0:HH/mm/ss}", order.timestamp.GetValueOrDefault());
             label11.Text = "Общая стоимость: " + order.paymentValue;
@@ -129,7 +113,7 @@ namespace diplom.src.forms
 
         private void ToolStripButton2_Click(object sender, EventArgs e)
         {
-            new findCustomer(this).Show();
+            new FindClient(this).Show();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -137,17 +121,16 @@ namespace diplom.src.forms
             OrderService service = OrderServiceImpl.GetService();
             if (currentCustomer != null)
             {
-                Order order = new Order(currentCustomer.id, textBox1.Text,
-                    DateTimeOffset.Now, Convert.ToDecimal(textBox2.Text));
+                Order order = new Order(currentCustomer.id, "test1",
+                    DateTimeOffset.Now, Convert.ToDecimal("10"));
                 service.create(order);
-                IClientService customerService = CustomerServiceImpl.GetService();
+                IClientService customerService = ClientServiceImpl.GetService();
                 Client customer = customerService.findById(currentCustomer.id);
                 updateState(customer);
             }
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) {
             Console.WriteLine("click");
         }
 
@@ -162,6 +145,16 @@ namespace diplom.src.forms
                 updateOrderInfo(currentOrderInfo);
                 Console.WriteLine("update order info");
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createOrderOnBtnClick(object sender, EventArgs e)
+        {
+            new CreateOrder(this, currentCustomer).Show();
         }
     }
 }

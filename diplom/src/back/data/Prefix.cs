@@ -12,16 +12,16 @@ namespace diplom.src.data
     {
         [Description("ИНН: ")]
         INN,
-        [Description("КПП: ")]
-        KPP,
-        [Description("Страна: ")]
-        COUNTRY,
-        [Description("Город: ")]
-        CITY,
-        [Description("Район: ")]
-        DISTRICT,
-        [Description("Улица: ")]
-        STREET
+        [Description("Телефон: ")]
+        PHONE,
+        [Description("Адрес: ")]
+        ADDRESS,
+        [Description("Имя: ")]
+        FNAME,
+        [Description("Отчество: ")]
+        MNAME,
+        [Description("Фамилия: ")]
+        LNAME
     }
 
     public static class PrefixValue

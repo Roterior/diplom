@@ -7,16 +7,22 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using diplom.src.data.classes;
 
-namespace diplom.src.entity
-{
+namespace diplom.src.entity {
+
     [Table(name: "client_t")]
     public class Client {
 
         public Client() {}
 
-        public Client(int inn, String address, Location location) {
+        public Client(String fname, String mname, String lname, String phone, String address, int? inn, int? pId, int? pSer) {
+            this.firstName = fname;
+            this.middleName = mname;
+            this.lastName = lname;
+            this.phone = phone;
             this.address = address;
             this.inn = inn;
+            this.passportId = pId;
+            this.passportSeries = pSer;
         }
 
         [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
@@ -31,13 +37,13 @@ namespace diplom.src.entity
 
         public String address { get; set; }
 
-        public int inn { get; set; }
+        public int? inn { get; set; }
 
-        public int passportId { get; set; }
+        public int? passportId { get; set; }
 
-        public int passportSeries { get; set; }
+        public int? passportSeries { get; set; }
 
-        [ForeignKey(name: "clientId")] public virtual List<Order> orders { get; set; }
+        [ForeignKey(name: "clientId")] public List<Order> orders { get; set; }
 
     }
 

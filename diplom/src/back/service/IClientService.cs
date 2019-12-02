@@ -10,7 +10,10 @@ namespace diplom.src.service
 {
     interface IClientService : CrudService<Client, Guid>
     {
-        Client findByInn(int inn);
+        Client findByInn(int? inn);
+
+        Client findBy(String fname, String mname);
 
     }
+
 }
