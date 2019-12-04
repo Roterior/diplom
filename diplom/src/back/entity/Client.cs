@@ -7,12 +7,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using diplom.src.data.classes;
 
-namespace diplom.src.entity {
+namespace diplom.src.entity
+{
 
     [Table(name: "client_t")]
-    public class Client {
-
-        public Client() {}
+    public class Client
+    {
 
         public Client(String fname, String mname, String lname, String phone, String address, int? inn, int? pId, int? pSer) {
             this.firstName = fname;

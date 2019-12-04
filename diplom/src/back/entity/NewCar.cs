@@ -7,19 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace diplom.src.back.entity {
-
+namespace diplom.src.back.entity
+{
     [Table(name: "new_car_t")]
-    public class NewCar : Car {
+    public class NewCar : Car
+    {
 
-        public NewCar() { }
+        public NewCar() {}
 
-        [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
+        public NewCar(String maker, String model, Decimal? price)
+        {
+            this.maker = maker;
+            this.model = model;
+            this.price = price;
+        }
 
-        public Guid orderId { get; set; }
+        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
 
-        [ForeignKey(name:"id")] public Client clientId { get; set; }
-
+        public Decimal? price { get; set; }
     }
-
 }

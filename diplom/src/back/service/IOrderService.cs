@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace diplom.src.service
 {
-    interface OrderService : CrudService<Order, long>
+
+    interface IOrderService : CrudService<Order, long>
     {
+
     }
+
 }

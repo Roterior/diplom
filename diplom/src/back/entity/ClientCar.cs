@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace diplom.src.back.entity {
+namespace diplom.src.back.entity
+{
 
     [Table(name:"client_car")]
-    public class ClientCar : Car {
-
-        public ClientCar() {}
+    public class ClientCar : Car
+    {
 
         [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
 
-        public string status { get; set; }
+        public String status { get; set; }
 
-        public string description { get; set; }
+        public String description { get; set; }
 
         [ForeignKey(name:"id")] public Client clientId { get; set; }
 

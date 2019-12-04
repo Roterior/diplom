@@ -8,10 +8,10 @@ using diplom.src.entity;
 
 namespace diplom.src.service.impl
 {
-    class OrderServiceImpl : OrderService
+    class OrderServiceImpl : IOrderService
     {
 
-        private static OrderService orderService = new OrderServiceImpl();
+        private static IOrderService orderService = new OrderServiceImpl();
 
         private OrderContext orderContext;
 
@@ -20,7 +20,7 @@ namespace diplom.src.service.impl
             orderContext = new OrderContext();
         }
 
-        public static OrderService GetService()
+        public static IOrderService GetService()
         {
             return orderService;
         }

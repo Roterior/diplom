@@ -118,7 +118,7 @@ namespace diplom.src.forms {
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            OrderService service = OrderServiceImpl.GetService();
+            IOrderService service = OrderServiceImpl.GetService();
             if (currentCustomer != null)
             {
                 Order order = new Order(currentCustomer.id, "test1",
@@ -156,5 +156,21 @@ namespace diplom.src.forms {
         {
             new CreateOrder(this, currentCustomer).Show();
         }
+
+        private void createOrderBuyCar(object sender, EventArgs e)
+        {
+            new CreateOrderBuyCar(this).Show();
+        }
+
+        private void createOrderRepairCar(object sender, EventArgs e)
+        {
+            new CreateOrderRepairCar().Show();
+        }
+
+        private void новыйАвтомобильToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AddNewCar(this).Show();
+        }
     }
+
 }

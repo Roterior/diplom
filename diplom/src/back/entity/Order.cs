@@ -9,12 +9,10 @@ using diplom.src.back.entity;
 
 namespace diplom.src.entity
 {
+
     [Table(name: "order_t")]
     public class Order
     {
-        public Order()
-        {
-        }
 
         public Order(string description, DateTimeOffset? timestamp, decimal? paymentValue)
         {
@@ -31,25 +29,18 @@ namespace diplom.src.entity
             this.paymentValue = paymentValue;
         }
 
-        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid id { get; set; }
+        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
 
-        [Column(name: "client_id")]
         public Guid clientId { get; set; }
 
         public String description { get; set; }
 
         public DateTimeOffset? timestamp { get; set; }
 
-        [Column(name: "price")]
         public Decimal? paymentValue { get; set; }
 
-        [ForeignKey(name: "orderId")]
-        public List<NewCar> newCars { get; set; }
+        [ForeignKey(name: "orderId")] public List<NewCar> newCars { get; set; }
 
-        public override string ToString()
-        {
-            return id.ToString() + " " + description;
-        }
     }
+
 }

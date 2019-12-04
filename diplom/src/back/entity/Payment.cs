@@ -8,16 +8,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace diplom.src.entity
 {
-    //[Table(name: "payment_t")]
+
+    [Table(name: "payment_t")]
     public class Payment
     {
 
-        //[Key]
-        public Guid id { get; set; }
+        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
 
-        //[Column(name: "order_id")]
         public Guid orderId { get; set; }
 
-        public Decimal payment { get; set; }
+        public Decimal price { get; set; }
+
     }
+
 }
