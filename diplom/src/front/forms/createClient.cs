@@ -46,7 +46,7 @@ namespace diplom.src.forms {
             } else {
                 Client client = customerService.create(new Client(
                     fname.Text, mname.Text, lname.Text, phone.Text, address.Text, int.Parse(inn.Text), int.Parse(pNum.Text), int.Parse(pSeries.Text)));
-                main.updateState(client);
+                //main.updateState(client);
                 Close();
             }
         }

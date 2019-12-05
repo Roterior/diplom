@@ -1,4 +1,5 @@
-﻿using diplom.src.data.exception;
+﻿using diplom.src.back.entity;
+using diplom.src.data.exception;
 using diplom.src.service;
 using diplom.src.service.impl;
 using System;
@@ -26,7 +27,15 @@ namespace diplom.src.forms {
 
         private void Button1_Click(object sender, EventArgs e) {
             try {
-                main.updateState(service.findBy(fname.Text, mname.Text));
+                FilterClient filter = new FilterClient();
+                filter.fname = fname.Text;
+                filter.mname = mname.Text;
+                filter.lname = lname.Text;
+                if (inn.Text != "")
+                {
+                    filter.inn = int.Parse(inn.Text);
+                }
+                main.updateClientTable(service.findBy(filter));
                 //main.updateState(service.findByInn(int.Parse(inn.Text)));
                 Close();
             } catch (EntityNotFoundException exception) {

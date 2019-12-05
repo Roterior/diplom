@@ -1,4 +1,5 @@
-﻿using diplom.src.data.classes;
+﻿using diplom.src.back.entity;
+using diplom.src.data.classes;
 using diplom.src.entity;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace diplom.src.service
     {
         Client findByInn(int? inn);
 
-        Client findBy(String fname, String mname);
+        List<Client> findBy(FilterClient filter);
 
     }
 

@@ -1,7 +1,10 @@
 ﻿using diplom.src.back.entity;
 using diplom.src.back.service;
 using diplom.src.back.service.impl;
+using diplom.src.entity;
 using diplom.src.forms;
+using diplom.src.service;
+using diplom.src.service.impl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,10 +19,12 @@ namespace diplom.src.front.forms
 {
     public partial class CreateOrderBuyCar : Form
     {
+        private readonly IClientService clientService = ClientServiceImpl.GetService();
         private readonly ICarService service = CarServiceImpl.GetService();
         private Main main;
         private NewCar currentNewCar;
         private List<NewCar> newCars;
+        private Client currentClient;
 
         public CreateOrderBuyCar()
         {
@@ -27,9 +32,10 @@ namespace diplom.src.front.forms
             loadNewCars();
         }
 
-        public CreateOrderBuyCar(Main main) : this()
+        public CreateOrderBuyCar(Main main, Client client) : this()
         {
             this.main = main;
+            this.currentClient = client;
         }
 
         private void loadNewCars()
@@ -130,12 +136,17 @@ namespace diplom.src.front.forms
             price.Text = "Стоимость:" + car.price;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void orderSelectedCar(object sender, EventArgs e)
         {
-            if (DialogResult.OK == MessageBox.Show("Вы купили авто!"))
-            {
-                Close();
-            }
+            OrderBuyCar order = new OrderBuyCar();
+            order.price = currentNewCar.price;
+            order.timestamp = DateTimeOffset.Now;
+            order.description = "test";
+            order.newCar = currentNewCar;
+            currentClient.orders.Add(order);
+            clientService.update(currentClient.id, currentClient);
         }
+
     }
+
 }

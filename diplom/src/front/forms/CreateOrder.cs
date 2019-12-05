@@ -40,9 +40,9 @@ namespace diplom.src.front.forms
             }
             else
             {
-                client.orders.Add(new Order(description.Text, DateTimeOffset.Now, Decimal.Parse(price.Text)));
+                //client.orders.Add(new Order(description.Text, DateTimeOffset.Now, Decimal.Parse(price.Text)));
                 service.update(client.id, client);
-                main.updateState(client);
+                //main.updateState(client);
                 Close();
             }
         }

@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 namespace diplom.src.back.entity
 {
     [Table(name: "order_t")]
-    class OrderBuyCar
+    public class OrderBuyCar
     {
+        public OrderBuyCar() { }
+
         [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
 
         public Guid clientId { get; set; }

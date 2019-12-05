@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using diplom.src.data.classes;
+using diplom.src.back.entity;
 
 namespace diplom.src.entity
 {
@@ -13,6 +14,7 @@ namespace diplom.src.entity
     [Table(name: "client_t")]
     public class Client
     {
+        public Client() { }
 
         public Client(String fname, String mname, String lname, String phone, String address, int? inn, int? pId, int? pSer) {
             this.firstName = fname;
@@ -43,7 +45,7 @@ namespace diplom.src.entity
 
         public int? passportSeries { get; set; }
 
-        [ForeignKey(name: "clientId")] public List<Order> orders { get; set; }
+        [ForeignKey(name: "clientId")] public List<OrderBuyCar> orders { get; set; }
 
     }
 

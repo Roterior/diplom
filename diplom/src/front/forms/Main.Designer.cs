@@ -50,8 +50,6 @@ namespace diplom.src.forms
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -66,6 +64,8 @@ namespace diplom.src.forms
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -90,7 +90,7 @@ namespace diplom.src.forms
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStrip1.Size = new System.Drawing.Size(824, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(822, 25);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -141,6 +141,8 @@ namespace diplom.src.forms
             // 
             // наПокупкуToolStripMenuItem
             // 
+            this.наПокупкуToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.наПокупкуToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.наПокупкуToolStripMenuItem.Name = "наПокупкуToolStripMenuItem";
             this.наПокупкуToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.наПокупкуToolStripMenuItem.Text = "На покупку";
@@ -148,6 +150,7 @@ namespace diplom.src.forms
             // 
             // наРемонтToolStripMenuItem
             // 
+            this.наРемонтToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.наРемонтToolStripMenuItem.Name = "наРемонтToolStripMenuItem";
             this.наРемонтToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.наРемонтToolStripMenuItem.Text = "На ремонт";
@@ -182,7 +185,7 @@ namespace diplom.src.forms
             this.groupBox1.Controls.Add(this.fname);
             this.groupBox1.Location = new System.Drawing.Point(12, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(240, 106);
+            this.groupBox1.Size = new System.Drawing.Size(240, 151);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Данные клиента";
@@ -191,7 +194,7 @@ namespace diplom.src.forms
             // 
             this.phone.AutoSize = true;
             this.phone.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.phone.Location = new System.Drawing.Point(6, 66);
+            this.phone.Location = new System.Drawing.Point(6, 100);
             this.phone.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.phone.Name = "phone";
             this.phone.Size = new System.Drawing.Size(62, 15);
@@ -201,7 +204,7 @@ namespace diplom.src.forms
             // inn
             // 
             this.inn.AutoSize = true;
-            this.inn.Location = new System.Drawing.Point(6, 56);
+            this.inn.Location = new System.Drawing.Point(6, 80);
             this.inn.Name = "inn";
             this.inn.Size = new System.Drawing.Size(34, 13);
             this.inn.TabIndex = 1;
@@ -211,7 +214,7 @@ namespace diplom.src.forms
             // 
             this.mname.AutoSize = true;
             this.mname.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mname.Location = new System.Drawing.Point(6, 41);
+            this.mname.Location = new System.Drawing.Point(6, 60);
             this.mname.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.mname.Name = "mname";
             this.mname.Size = new System.Drawing.Size(64, 15);
@@ -221,7 +224,7 @@ namespace diplom.src.forms
             // lname
             // 
             this.lname.AutoSize = true;
-            this.lname.Location = new System.Drawing.Point(6, 16);
+            this.lname.Location = new System.Drawing.Point(6, 20);
             this.lname.Name = "lname";
             this.lname.Size = new System.Drawing.Size(59, 13);
             this.lname.TabIndex = 0;
@@ -231,7 +234,7 @@ namespace diplom.src.forms
             // 
             this.address.AutoSize = true;
             this.address.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.address.Location = new System.Drawing.Point(6, 81);
+            this.address.Location = new System.Drawing.Point(6, 120);
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(48, 15);
             this.address.TabIndex = 1;
@@ -241,12 +244,11 @@ namespace diplom.src.forms
             // 
             this.fname.AutoSize = true;
             this.fname.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fname.Location = new System.Drawing.Point(6, 29);
+            this.fname.Location = new System.Drawing.Point(6, 40);
             this.fname.Name = "fname";
             this.fname.Size = new System.Drawing.Size(34, 15);
             this.fname.TabIndex = 0;
             this.fname.Text = "Имя:";
-            this.fname.Click += new System.EventHandler(this.label1_Click);
             // 
             // tabControl1
             // 
@@ -254,7 +256,7 @@ namespace diplom.src.forms
             this.tabControl1.Location = new System.Drawing.Point(258, 44);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(239, 261);
+            this.tabControl1.Size = new System.Drawing.Size(239, 336);
             this.tabControl1.TabIndex = 11;
             // 
             // tabPage1
@@ -264,7 +266,7 @@ namespace diplom.src.forms
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(231, 235);
+            this.tabPage1.Size = new System.Drawing.Size(231, 310);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "1";
             // 
@@ -278,31 +280,17 @@ namespace diplom.src.forms
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
+            this.date,
+            this.price});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(225, 229);
+            this.dataGridView1.Size = new System.Drawing.Size(225, 304);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "desc";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "cost";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
             // 
             // label7
             // 
@@ -320,9 +308,9 @@ namespace diplom.src.forms
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.textBox3);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(12, 140);
+            this.groupBox3.Location = new System.Drawing.Point(12, 185);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(240, 165);
+            this.groupBox3.Size = new System.Drawing.Size(240, 195);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Данные заказа";
@@ -330,7 +318,7 @@ namespace diplom.src.forms
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 29);
+            this.label12.Location = new System.Drawing.Point(6, 40);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(94, 13);
             this.label12.TabIndex = 5;
@@ -339,7 +327,7 @@ namespace diplom.src.forms
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 42);
+            this.label11.Location = new System.Drawing.Point(6, 60);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(102, 13);
             this.label11.TabIndex = 4;
@@ -348,7 +336,7 @@ namespace diplom.src.forms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 16);
+            this.label10.Location = new System.Drawing.Point(6, 20);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(87, 13);
             this.label10.TabIndex = 3;
@@ -358,7 +346,7 @@ namespace diplom.src.forms
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.Control;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Location = new System.Drawing.Point(6, 71);
+            this.textBox3.Location = new System.Drawing.Point(6, 100);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
@@ -368,7 +356,7 @@ namespace diplom.src.forms
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 55);
+            this.label8.Location = new System.Drawing.Point(6, 80);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 13);
             this.label8.TabIndex = 0;
@@ -377,7 +365,7 @@ namespace diplom.src.forms
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(496, 28);
+            this.label13.Location = new System.Drawing.Point(500, 28);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 13;
@@ -386,10 +374,10 @@ namespace diplom.src.forms
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage2);
-            this.tabControl2.Location = new System.Drawing.Point(499, 44);
+            this.tabControl2.Location = new System.Drawing.Point(503, 44);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(315, 261);
+            this.tabControl2.Size = new System.Drawing.Size(315, 336);
             this.tabControl2.TabIndex = 14;
             // 
             // tabPage2
@@ -399,7 +387,7 @@ namespace diplom.src.forms
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(307, 235);
+            this.tabPage2.Size = new System.Drawing.Size(307, 310);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "1";
             // 
@@ -422,7 +410,7 @@ namespace diplom.src.forms
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(301, 229);
+            this.dataGridView2.Size = new System.Drawing.Size(301, 304);
             this.dataGridView2.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn2
@@ -445,10 +433,24 @@ namespace diplom.src.forms
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
+            // date
+            // 
+            this.date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.date.HeaderText = "Дата";
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.price.HeaderText = "Цена";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
             // Main
             // 
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(824, 314);
+            this.ClientSize = new System.Drawing.Size(822, 384);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.groupBox3);
@@ -459,7 +461,6 @@ namespace diplom.src.forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Main";
-            this.Load += new System.EventHandler(this.Main_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -491,8 +492,6 @@ namespace diplom.src.forms
         private TabControl tabControl1;
         private TabPage tabPage1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
         private Label label7;
         private GroupBox groupBox3;
         private TextBox textBox3;
@@ -513,5 +512,7 @@ namespace diplom.src.forms
         private ToolStripMenuItem наРемонтToolStripMenuItem;
         private ToolStripDropDownButton toolStripDropDownButton2;
         private ToolStripMenuItem новыйАвтомобильToolStripMenuItem;
+        private DataGridViewTextBoxColumn date;
+        private DataGridViewTextBoxColumn price;
     }
 }

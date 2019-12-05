@@ -49,38 +49,25 @@ namespace diplom.src.service.impl {
             return entity;
         }
 
-        public Client findBy(String fname, String mname) {
+        public List<Client> findBy(FilterClient filter) {
             IQueryable<Client> query = context.Clients.Include(c => c.orders);
-            FilterClient filter = new FilterClient();
-            filter.fname = fname;
-            filter.mname = mname;
             if (filter.fname != "")
             {
-                query = query.Where(c => c.firstName == fname);
+                query = query.Where(c => c.firstName == filter.fname);
             }
             if (filter.mname != "")
             {
-                query = query.Where(c => c.middleName == mname);
+                query = query.Where(c => c.middleName == filter.mname);
             }
-            Client client = query.FirstOrDefault();
-            //List<Client> clients = 
-                //context.Clients
-
-                //.Include(c => c.orders)
-                //.Where(c => filter(fname, mname))
-                //.ToList();
-
-            return client;
-        }
-
-        private bool filter(String fname, String mname)
-        {
-            if (fname != "")
+            if (filter.lname != "")
             {
-
+                query = query.Where(c => c.lastName == filter.lname);
             }
-
-            return true;
+            if (filter.inn != null && filter.inn != 0)
+            {
+                query = query.Where(c => c.inn == filter.inn);
+            }
+            return query.ToList();
         }
 
         public Client findByInn(int? inn) {
