@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using diplom.src.back.context;
+using diplom.src.back.entity;
 using diplom.src.entity;
 
 namespace diplom.src.service.impl
@@ -11,11 +12,11 @@ namespace diplom.src.service.impl
     class OrderServiceImpl : IOrderService
     {
         private static readonly IOrderService orderService = new OrderServiceImpl();
-        //private readonly OrderContext orderContext;
+        private readonly ClientContext context;
 
         public OrderServiceImpl()
         {
-            //orderContext = new OrderContext();
+            context = new ClientContext();
         }
 
         public static IOrderService GetService()
@@ -23,21 +24,23 @@ namespace diplom.src.service.impl
             return orderService;
         }
 
-        public Order Create(Order entity)
+        public OrderBuyCar Create(OrderBuyCar entity)
         {
-            //orderContext.Orders.Add(entity);
-            //orderContext.SaveChanges();
+            context.OrderBuyCars.Add(entity);
+            context.SaveChanges();
             return entity;
         }
 
-        public Order GetById(long id)
+        public OrderBuyCar GetById(long id)
         {
             throw new NotImplementedException();
         }
 
-        public Order Update(Order entity)
+        public OrderBuyCar Update(OrderBuyCar entity)
         {
-            throw new NotImplementedException();
+            context.OrderBuyCars.Add(entity);
+            context.SaveChanges();
+            return entity;
         }
     }
 }

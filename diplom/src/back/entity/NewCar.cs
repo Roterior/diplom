@@ -25,5 +25,7 @@ namespace diplom.src.back.entity
         [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
 
         public Decimal? price { get; set; }
+
+        [ForeignKey(name: "NewCarId")] public List<OrderBuyCar> orders { get; set; }
     }
 }

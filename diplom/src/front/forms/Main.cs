@@ -20,6 +20,7 @@ namespace diplom.src.forms
         public static Client currentClient;
         private OrderBuyCar currentOrderInfo;
         private List<Client> clients;
+        private Point mouseLocation;
 
         public Main()
         {
@@ -271,6 +272,31 @@ namespace diplom.src.forms
         private void FindClientsBtnClick(object sender, EventArgs e)
         {
             new FindClient(this).Show();
+        }
+
+        private void DragOnMouseDown(object sender, MouseEventArgs e)
+        {
+            mouseLocation = new Point(-e.X, -e.Y);
+        }
+
+        private void DragOnMouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                Point mousePose = Control.MousePosition;
+                mousePose.Offset(mouseLocation.X, mouseLocation.Y);
+                Location = mousePose;
+            }
+        }
+
+        private void CloseBtn(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void MinimizeBtn(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

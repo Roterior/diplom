@@ -21,6 +21,7 @@ namespace diplom.src.front.forms
     {
         private readonly IClientService clientService = ClientServiceImpl.GetService();
         private readonly INewCarService service = CarServiceImpl.GetService();
+        private readonly IOrderService orderService = OrderServiceImpl.GetService();
         private readonly Main main;
         private NewCar currentNewCar;
         private List<NewCar> newCars;
@@ -129,6 +130,7 @@ namespace diplom.src.front.forms
 
         private void updateInfo(NewCar car)
         {
+
             maker.Text = "Марка:" + car.maker;
             model.Text = "Модель:" + car.model;
             price.Text = "Стоимость:" + car.price;
@@ -136,14 +138,23 @@ namespace diplom.src.front.forms
 
         private void BuySelectedCarBtnClick(object sender, EventArgs e)
         {
-            Main.currentClient.orders.Add(new OrderBuyCar
+/*            Main.currentClient.orders.Add(new OrderBuyCar
             {
                 price = currentNewCar.price,
                 timestamp = DateTimeOffset.Now,
                 description = "test",
                 newCar = currentNewCar
-            });
-            clientService.Update(Main.currentClient);
+            });*/
+            OrderBuyCar order = new OrderBuyCar
+            {
+                clientId = Main.currentClient.id,
+                NewCarId = currentNewCar.id,
+                price = currentNewCar.price,
+                timestamp = DateTimeOffset.Now,
+                description = "test"
+            };
+            orderService.Create(order);
+            //clientService.Update(Main.currentClient);
             main.updateClientOrders(Main.currentClient);
             Close();
         }

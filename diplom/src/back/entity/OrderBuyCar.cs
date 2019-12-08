@@ -23,6 +23,6 @@ namespace diplom.src.back.entity
 
         public Decimal? price { get; set; }
 
-        public virtual NewCar newCar { get; set; }
+        public Guid NewCarId { get; set; }
     }
 }
