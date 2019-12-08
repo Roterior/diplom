@@ -17,7 +17,7 @@ namespace diplom.src.front.forms
     public partial class AddNewCar : Form
     {
 
-        private readonly ICarService service = CarServiceImpl.GetService();
+        private readonly INewCarService service = CarServiceImpl.GetService();
         private Main main;
 
         public AddNewCar()
@@ -31,7 +31,7 @@ namespace diplom.src.front.forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            service.create(new NewCar(
+            service.Create(new NewCar(
                 maker.Text, 
                 model.Text, 
                 Decimal.Parse(price.Text)));

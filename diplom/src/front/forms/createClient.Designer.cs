@@ -223,6 +223,7 @@ namespace diplom.src.forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "CreateClient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создание клиента";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using diplom.src.context;
+using diplom.src.back.context;
 using diplom.src.entity;
 
 namespace diplom.src.service.impl
 {
     class OrderServiceImpl : IOrderService
     {
-
-        private static IOrderService orderService = new OrderServiceImpl();
-
-        private OrderContext orderContext;
+        private static readonly IOrderService orderService = new OrderServiceImpl();
+        //private readonly OrderContext orderContext;
 
         public OrderServiceImpl()
         {
-            orderContext = new OrderContext();
+            //orderContext = new OrderContext();
         }
 
         public static IOrderService GetService()
@@ -25,19 +23,19 @@ namespace diplom.src.service.impl
             return orderService;
         }
 
-        public Order create(Order entity)
+        public Order Create(Order entity)
         {
-            orderContext.Orders.Add(entity);
-            orderContext.SaveChanges();
+            //orderContext.Orders.Add(entity);
+            //orderContext.SaveChanges();
             return entity;
         }
 
-        public Order findById(long id)
+        public Order GetById(long id)
         {
             throw new NotImplementedException();
         }
 
-        public Order update(long id, Order entity)
+        public Order Update(Order entity)
         {
             throw new NotImplementedException();
         }

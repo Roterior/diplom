@@ -89,20 +89,16 @@
     <Compile Include="src\back\entity\NewCar.cs" />
     <Compile Include="src\back\entity\OrderBuyCar.cs" />
     <Compile Include="src\back\entity\OrderRepairCar.cs" />
-    <Compile Include="src\back\service\ICarService.cs" />
+    <Compile Include="src\back\service\IClientCarService.cs" />
+    <Compile Include="src\back\service\INewCarService.cs" />
     <Compile Include="src\back\service\impl\CarServiceImpl.cs" />
-    <Compile Include="src\front\context\CarContext.cs" />
-    <Compile Include="src\front\context\ClientContext.cs" />
-    <Compile Include="src\front\context\OrderContext.cs" />
-    <Compile Include="src\back\data\interfaces\CrudService.cs" />
-    <Compile Include="src\back\data\classes\Location.cs" />
-    <Compile Include="src\back\data\exception\EntityNotFoundException.cs" />
-    <Compile Include="src\back\data\Prefix.cs" />
+    <Compile Include="src\back\context\ClientContext.cs" />
+    <Compile Include="src\back\interfaces\ICrudService.cs" />
+    <Compile Include="src\back\exception\EntityNotFoundException.cs" />
     <Compile Include="src\back\entity\Client.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\back\entity\Order.cs" />
-    <Compile Include="src\back\entity\Payment.cs" />
     <Compile Include="src\front\forms\AddNewCar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,12 +110,6 @@
     </Compile>
     <Compile Include="src\front\forms\CreateClient.Designer.cs">
       <DependentUpon>CreateClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\front\forms\CreateOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\front\forms\CreateOrder.Designer.cs">
-      <DependentUpon>CreateOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="src\front\forms\CreateOrderBuyCar.cs">
       <SubType>Form</SubType>
@@ -145,12 +135,6 @@
     <Compile Include="src\front\forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\front\forms\showOrderItems.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\front\forms\showOrderItems.Designer.cs">
-      <DependentUpon>showOrderItems.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\back\service\IClientService.cs" />
     <Compile Include="src\back\service\impl\ClientServiceImpl.cs" />
     <Compile Include="src\back\service\impl\OrderServiceImpl.cs" />
@@ -171,9 +155,6 @@
     <EmbeddedResource Include="src\front\forms\CreateClient.resx">
       <DependentUpon>CreateClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\front\forms\CreateOrder.resx">
-      <DependentUpon>CreateOrder.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\front\forms\CreateOrderBuyCar.resx">
       <DependentUpon>CreateOrderBuyCar.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,9 +166,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\front\forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\front\forms\showOrderItems.resx">
-      <DependentUpon>showOrderItems.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

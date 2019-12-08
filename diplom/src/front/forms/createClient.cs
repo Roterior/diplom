@@ -1,6 +1,4 @@
-﻿using diplom.src.context;
-using diplom.src.entity;
-using diplom.src.data.classes;
+﻿using diplom.src.entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +15,7 @@ namespace diplom.src.forms {
     public partial class CreateClient : Form {
 
         private readonly IClientService customerService = ClientServiceImpl.GetService();
-        private Main main;
+        private readonly Main main;
 
         public CreateClient() {
             InitializeComponent();
@@ -44,13 +42,11 @@ namespace diplom.src.forms {
             if (inn.Text == "" || pNum.Text == "" || pSeries.Text == "") {
                 MessageBox.Show("Вы не ввели одно из важных полей: инн, номер паспорта, серия паспорта!");
             } else {
-                Client client = customerService.create(new Client(
+                Client client = customerService.Create(new Client(
                     fname.Text, mname.Text, lname.Text, phone.Text, address.Text, int.Parse(inn.Text), int.Parse(pNum.Text), int.Parse(pSeries.Text)));
-                //main.updateState(client);
+                main.updateClientTable(new List<Client>(1) { client });
                 Close();
             }
         }
-
     }
-
 }

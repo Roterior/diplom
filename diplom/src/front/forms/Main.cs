@@ -6,10 +6,8 @@ using System.Linq;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using diplom.src.context;
 using diplom.src.entity;
 using System.Data.Entity;
-using diplom.src.data;
 using diplom.src.service;
 using diplom.src.service.impl;
 using diplom.src.front.forms;
@@ -17,22 +15,15 @@ using diplom.src.back.entity;
 
 namespace diplom.src.forms
 {
-
     public partial class Main
     {
-
-        private static Client currentClient = null;
-        private static OrderBuyCar currentOrderInfo = null;
+        public static Client currentClient;
+        private OrderBuyCar currentOrderInfo;
         private List<Client> clients;
 
         public Main()
         {
             InitializeComponent();
-        }
-
-        private void ToolStripButton1_Click(object sender, EventArgs e)
-        {
-            new CreateClient(this).Show();
         }
 
         public void updateClientOrders(Client client)
@@ -42,7 +33,7 @@ namespace diplom.src.forms
                 for (int i = 0; i < tabControl1.TabPages.Count; i++) {
                     tabControl1.TabPages.Remove(tabControl1.TabPages[i]);
                 }
-                int pages = client.orders.Count / 8 + 1;
+                int pages = client != null && client.orders != null ? client.orders.Count / 8 + 1 : 1;
                 List<TabPage> tabPages = new List<TabPage>(pages);
                 for (int i = 0; i < pages; i++) {
                     TabPage tabPage = new TabPage((i + 1).ToString());
@@ -94,6 +85,18 @@ namespace diplom.src.forms
                             String.Format("{0:dd/MM/yyyy}", order.timestamp.GetValueOrDefault()), order.price);
                     });
                 });
+                if (client.orders != null && client.orders.Count > 0)
+                {
+                    if (currentOrderInfo == null)
+                    {
+                        updateOrderInfo(client.orders[0]);
+                    }
+                }
+                else
+                {
+                    currentOrderInfo = null;
+                    updateOrderInfo(currentOrderInfo);
+                }
             }
             catch (NullReferenceException exception)
             {
@@ -103,33 +106,21 @@ namespace diplom.src.forms
 
         private void updateOrderInfo(OrderBuyCar order)
         {
-            textBox3.Text = order.description;
-            label10.Text = "Дата создания: " + String.Format("{0:dd/MM/yyyy}", order.timestamp.GetValueOrDefault());
-            label12.Text = "Время создания: " + String.Format("{0:HH/mm/ss}", order.timestamp.GetValueOrDefault());
-            label11.Text = "Общая стоимость: " + order.price;
-        }
-
-        private void ToolStripButton2_Click(object sender, EventArgs e)
-        {
-            new FindClient(this).Show();
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            IOrderService service = OrderServiceImpl.GetService();
-            if (currentClient != null)
+            if (null == order)
             {
-                Order order = new Order(currentClient.id, "test1",
-                    DateTimeOffset.Now, Convert.ToDecimal("10"));
-                service.create(order);
-                IClientService customerService = ClientServiceImpl.GetService();
-                Client customer = customerService.findById(currentClient.id);
-                //updateState(customer);
+                textBox3.Text = "";
+                label10.Text = "Дата создания: ";
+                label12.Text = "Время создания: ";
+                label11.Text = "Общая стоимость: ";
             }
-        }
+            else
+            {
+                textBox3.Text = order.description;
+                label10.Text = "Дата создания: " + String.Format("{0:dd/MM/yyyy}", order.timestamp.GetValueOrDefault());
+                label12.Text = "Время создания: " + String.Format("{0:HH/mm/ss}", order.timestamp.GetValueOrDefault());
+                label11.Text = "Общая стоимость: " + order.price;
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) {
-            Console.WriteLine("click");
+            }
         }
 
         private void CellClick(object sender, DataGridViewCellEventArgs e)
@@ -137,7 +128,7 @@ namespace diplom.src.forms
             DataGridView dataGrid = (DataGridView)sender;
             int page = int.Parse(dataGrid.Name.Substring("dataGridView".Length)) - 1;
             OrderBuyCar selected = null;
-            if (e.RowIndex != -1)
+            if (e.RowIndex != -1 && currentClient != null)
             {
                 selected = currentClient.orders[page * 8 + e.RowIndex];
             }
@@ -148,14 +139,9 @@ namespace diplom.src.forms
             }
         }
 
-        private void createOrderOnBtnClick(object sender, EventArgs e)
-        {
-            new CreateOrder(this, currentClient).Show();
-        }
-
         private void createOrderBuyCar(object sender, EventArgs e)
         {
-            new CreateOrderBuyCar(this, currentClient).Show();
+            new CreateOrderBuyCar(this).Show();
         }
 
         private void createOrderRepairCar(object sender, EventArgs e)
@@ -234,12 +220,14 @@ namespace diplom.src.forms
                 if (clients != null && clients.Count > 0)
                 {
                     currentClient = clients[0];
-                    updateClientInfo(currentClient);
+                    updateClientInfo();
                     updateClientOrders(currentClient);
                 }
                 else
                 {
                     currentClient = null;
+                    currentOrderInfo = null;
+                    updateClientOrders(currentClient);
                 }
             }
             catch (NullReferenceException exception)
@@ -260,21 +248,29 @@ namespace diplom.src.forms
             if (selected != null && (currentClient == null || selected != currentClient))
             {
                 currentClient = selected;
-                updateClientInfo(currentClient);
+                updateClientInfo();
                 updateClientOrders(currentClient);
             }
         }
 
-        private void updateClientInfo(Client client)
+        private void updateClientInfo()
         {
-            fname.Text = "Имя: " + client.firstName;
-            mname.Text = "Отчество: " + client.middleName;
-            lname.Text = "Фамилия: " + client.lastName;
-            inn.Text = "ИНН: " + client.inn;
-            phone.Text = "Телефон: " + client.phone;
-            address.Text = "Адрес: " + client.address;
+            fname.Text = "Имя: " + currentClient.firstName;
+            mname.Text = "Отчество: " + currentClient.middleName;
+            lname.Text = "Фамилия: " + currentClient.lastName;
+            inn.Text = "ИНН: " + currentClient.inn;
+            phone.Text = "Телефон: " + currentClient.phone;
+            address.Text = "Адрес: " + currentClient.address;
         }
 
-    }
+        private void AddNewClientOnBtnClick(object sender, EventArgs e)
+        {
+            new CreateClient(this).Show();
+        }
 
+        private void FindClientsBtnClick(object sender, EventArgs e)
+        {
+            new FindClient(this).Show();
+        }
+    }
 }

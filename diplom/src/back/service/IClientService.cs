@@ -1,20 +1,15 @@
 ﻿using diplom.src.back.entity;
-using diplom.src.data.classes;
+using diplom.src.back.interfaces;
 using diplom.src.entity;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace diplom.src.service
 {
-    interface IClientService : CrudService<Client, Guid>
+    interface IClientService : ICrudService<Client, Guid>
     {
-        Client findByInn(int? inn);
+        Client GetByInn(int? inn);
 
-        List<Client> findBy(FilterClient filter);
-
+        List<Client> GetByFilter(FilterClient filter);
     }
-
 }

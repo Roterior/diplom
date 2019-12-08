@@ -22,7 +22,7 @@ namespace diplom.src.back.entity
             this.price = price;
         }
 
-        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
+        [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
 
         public Decimal? price { get; set; }
     }

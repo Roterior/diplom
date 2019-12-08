@@ -13,22 +13,6 @@ namespace diplom.src.entity
     [Table(name: "order_t")]
     public class Order
     {
-
-        public Order(string description, DateTimeOffset? timestamp, decimal? paymentValue)
-        {
-            this.description = description;
-            this.timestamp = timestamp;
-            this.paymentValue = paymentValue;
-        }
-
-        public Order(Guid clientId, string description, DateTimeOffset? timestamp, decimal? paymentValue)
-        {
-            this.clientId = clientId;
-            this.description = description;
-            this.timestamp = timestamp;
-            this.paymentValue = paymentValue;
-        }
-
         [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
 
         public Guid clientId { get; set; }
@@ -40,7 +24,5 @@ namespace diplom.src.entity
         public Decimal? paymentValue { get; set; }
 
         [ForeignKey(name: "orderId")] public List<NewCar> newCars { get; set; }
-
     }
-
 }

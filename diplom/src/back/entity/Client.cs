@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using diplom.src.data.classes;
 using diplom.src.back.entity;
 
 namespace diplom.src.entity
@@ -27,7 +26,7 @@ namespace diplom.src.entity
             this.passportSeries = pSer;
         }
 
-        [Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
+        [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
 
         public String firstName { get; set; }
 
@@ -46,7 +45,5 @@ namespace diplom.src.entity
         public int? passportSeries { get; set; }
 
         [ForeignKey(name: "clientId")] public List<OrderBuyCar> orders { get; set; }
-
     }
-
 }

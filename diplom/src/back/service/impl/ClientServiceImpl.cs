@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using diplom.src.context;
-using diplom.src.data.classes;
-using diplom.src.data.exception;
 using diplom.src.entity;
 using System.Data.Entity.Infrastructure;
 using diplom.src.back.entity;
+using diplom.src.back.context;
+using diplom.src.back.exception;
 
 namespace diplom.src.service.impl {
 
@@ -22,13 +21,13 @@ namespace diplom.src.service.impl {
             context = new ClientContext();
         }
 
-        public Client create(Client entity) {
+        public Client Create(Client entity) {
             context.Clients.Add(entity);
             context.SaveChanges();
             return entity;
         }
 
-        public Client findById(Guid id) {
+        public Client GetById(Guid id) {
             context = new ClientContext();
             Client customer = context.Clients
                 .Include(c => c.orders)
@@ -43,34 +42,33 @@ namespace diplom.src.service.impl {
             return service;
         }
 
-        public Client update(Guid id, Client entity) {
-            entity.id = id;
+        public Client Update(Client entity) {
             context.SaveChanges();
             return entity;
         }
 
-        public List<Client> findBy(FilterClient filter) {
+        public List<Client> GetByFilter(FilterClient filter) {
             IQueryable<Client> query = context.Clients.Include(c => c.orders);
             if (filter.fname != "")
             {
-                query = query.Where(c => c.firstName == filter.fname);
+                query = query.Where(c => c.firstName.Contains(filter.fname));
             }
             if (filter.mname != "")
             {
-                query = query.Where(c => c.middleName == filter.mname);
+                query = query.Where(c => c.middleName.Contains(filter.mname));
             }
             if (filter.lname != "")
             {
-                query = query.Where(c => c.lastName == filter.lname);
+                query = query.Where(c => c.lastName.Contains(filter.lname));
             }
             if (filter.inn != null && filter.inn != 0)
             {
-                query = query.Where(c => c.inn == filter.inn);
+                query = query.Where(c => c.inn.ToString().Contains(filter.inn.ToString()));
             }
             return query.ToList();
         }
 
-        public Client findByInn(int? inn) {
+        public Client GetByInn(int? inn) {
             Client client = context.Clients
                 .Include(c => c.orders)
                 .Where(c => c.inn == inn)
@@ -80,7 +78,5 @@ namespace diplom.src.service.impl {
             }
             return client;
         }
-
     }
-
 }

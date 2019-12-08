@@ -52,7 +52,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Купить";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.orderSelectedCar);
+            this.button1.Click += new System.EventHandler(this.BuySelectedCarBtnClick);
             // 
             // maker
             // 
@@ -160,6 +160,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "CreateOrderBuyCar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateOrderBuyCar";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

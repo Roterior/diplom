@@ -24,7 +24,5 @@ namespace diplom.src.back.entity
         public String maker { get; set; }
 
         public int? releaseYear { get; set; }
-
     }
-
 }

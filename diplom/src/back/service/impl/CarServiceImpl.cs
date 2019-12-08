@@ -3,43 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using diplom.src.back.context;
 using diplom.src.back.entity;
-using diplom.src.front.context;
 
 namespace diplom.src.back.service.impl
 {
-    class CarServiceImpl : ICarService
+    class CarServiceImpl : INewCarService
     {
-        private static ICarService service = new CarServiceImpl();
-        private CarContext context;
+        private static readonly INewCarService service = new CarServiceImpl();
+        private readonly ClientContext context;
 
         public CarServiceImpl()
         {
-            context = new CarContext();
+            context = new ClientContext();
         }
 
-        public NewCar create(NewCar entity)
+        public NewCar Create(NewCar entity)
         {
             context.NewCars.Add(entity);
             context.SaveChanges();
             return entity;
         }
 
-        public static ICarService GetService()
+        public static INewCarService GetService()
         {
             return service;
         }
 
-        public NewCar findById(Guid id)
+        public NewCar GetById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public NewCar update(Guid id, NewCar entity)
+        public NewCar Update(NewCar entity)
         {
-            throw new NotImplementedException();
+            return entity;
         }
-        public List<NewCar> findAll()
+
+        public List<NewCar> GetAll()
         {
             return context.NewCars.ToList();
         }

@@ -20,11 +20,10 @@ namespace diplom.src.front.forms
     public partial class CreateOrderBuyCar : Form
     {
         private readonly IClientService clientService = ClientServiceImpl.GetService();
-        private readonly ICarService service = CarServiceImpl.GetService();
-        private Main main;
+        private readonly INewCarService service = CarServiceImpl.GetService();
+        private readonly Main main;
         private NewCar currentNewCar;
         private List<NewCar> newCars;
-        private Client currentClient;
 
         public CreateOrderBuyCar()
         {
@@ -32,15 +31,14 @@ namespace diplom.src.front.forms
             loadNewCars();
         }
 
-        public CreateOrderBuyCar(Main main, Client client) : this()
+        public CreateOrderBuyCar(Main main) : this()
         {
             this.main = main;
-            this.currentClient = client;
         }
 
         private void loadNewCars()
         {
-            newCars = service.findAll();
+            newCars = service.GetAll();
             try
             {
                 for (int i = 0; i < tabControl1.TabPages.Count; i++)
@@ -136,17 +134,18 @@ namespace diplom.src.front.forms
             price.Text = "Стоимость:" + car.price;
         }
 
-        private void orderSelectedCar(object sender, EventArgs e)
+        private void BuySelectedCarBtnClick(object sender, EventArgs e)
         {
-            OrderBuyCar order = new OrderBuyCar();
-            order.price = currentNewCar.price;
-            order.timestamp = DateTimeOffset.Now;
-            order.description = "test";
-            order.newCar = currentNewCar;
-            currentClient.orders.Add(order);
-            clientService.update(currentClient.id, currentClient);
+            Main.currentClient.orders.Add(new OrderBuyCar
+            {
+                price = currentNewCar.price,
+                timestamp = DateTimeOffset.Now,
+                description = "test",
+                newCar = currentNewCar
+            });
+            clientService.Update(Main.currentClient);
+            main.updateClientOrders(Main.currentClient);
+            Close();
         }
-
     }
-
 }

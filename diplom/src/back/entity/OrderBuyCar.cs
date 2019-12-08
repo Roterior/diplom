@@ -11,7 +11,7 @@ namespace diplom.src.back.entity
     [Table(name: "order_t")]
     public class OrderBuyCar
     {
-        public OrderBuyCar() { }
+        public OrderBuyCar() {}
 
         [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
 
@@ -23,6 +23,6 @@ namespace diplom.src.back.entity
 
         public Decimal? price { get; set; }
 
-        public NewCar newCar { get; set; }
+        public virtual NewCar newCar { get; set; }
     }
 }

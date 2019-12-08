@@ -32,14 +32,15 @@ namespace diplom.src.forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.клиентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.новыйАвтомобильToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.наПокупкуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.наРемонтToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.новыйАвтомобильToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.клиентаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.автомобильToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.phone = new System.Windows.Forms.Label();
             this.inn = new System.Windows.Forms.Label();
@@ -50,6 +51,8 @@ namespace diplom.src.forms
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -64,8 +67,6 @@ namespace diplom.src.forms
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -82,11 +83,9 @@ namespace diplom.src.forms
             this.toolStrip1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton3,
-            this.toolStripButton2,
+            this.toolStripDropDownButton2,
             this.toolStripDropDownButton1,
-            this.toolStripDropDownButton2});
+            this.toolStripDropDownButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -94,38 +93,31 @@ namespace diplom.src.forms
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // toolStripDropDownButton2
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(120, 22);
-            this.toolStripButton1.Text = "Добавить клиента";
-            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
+            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.клиентаToolStripMenuItem,
+            this.новыйАвтомобильToolStripMenuItem});
+            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
+            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(72, 22);
+            this.toolStripDropDownButton2.Text = "Добавить";
             // 
-            // toolStripButton3
+            // клиентаToolStripMenuItem
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(105, 22);
-            this.toolStripButton3.Text = "Найти клиентов";
-            this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton2_Click);
+            this.клиентаToolStripMenuItem.Name = "клиентаToolStripMenuItem";
+            this.клиентаToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.клиентаToolStripMenuItem.Text = "Клиента";
+            this.клиентаToolStripMenuItem.Click += new System.EventHandler(this.AddNewClientOnBtnClick);
             // 
-            // toolStripButton2
+            // новыйАвтомобильToolStripMenuItem
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(164, 22);
-            this.toolStripButton2.Text = "Создать заказ на покупку";
-            this.toolStripButton2.Click += new System.EventHandler(this.createOrderOnBtnClick);
+            this.новыйАвтомобильToolStripMenuItem.Name = "новыйАвтомобильToolStripMenuItem";
+            this.новыйАвтомобильToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.новыйАвтомобильToolStripMenuItem.Text = "Новый Автомобиль";
+            this.новыйАвтомобильToolStripMenuItem.Click += new System.EventHandler(this.новыйАвтомобильToolStripMenuItem_Click);
             // 
             // toolStripDropDownButton1
             // 
@@ -156,23 +148,30 @@ namespace diplom.src.forms
             this.наРемонтToolStripMenuItem.Text = "На ремонт";
             this.наРемонтToolStripMenuItem.Click += new System.EventHandler(this.createOrderRepairCar);
             // 
-            // toolStripDropDownButton2
+            // toolStripDropDownButton3
             // 
-            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.новыйАвтомобильToolStripMenuItem});
-            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
-            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(72, 22);
-            this.toolStripDropDownButton2.Text = "Добавить";
+            this.toolStripDropDownButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.клиентаToolStripMenuItem1,
+            this.автомобильToolStripMenuItem});
+            this.toolStripDropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton3.Image")));
+            this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton3.Name = "toolStripDropDownButton3";
+            this.toolStripDropDownButton3.Size = new System.Drawing.Size(55, 22);
+            this.toolStripDropDownButton3.Text = "Поиск";
             // 
-            // новыйАвтомобильToolStripMenuItem
+            // клиентаToolStripMenuItem1
             // 
-            this.новыйАвтомобильToolStripMenuItem.Name = "новыйАвтомобильToolStripMenuItem";
-            this.новыйАвтомобильToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.новыйАвтомобильToolStripMenuItem.Text = "Новый Автомобиль";
-            this.новыйАвтомобильToolStripMenuItem.Click += new System.EventHandler(this.новыйАвтомобильToolStripMenuItem_Click);
+            this.клиентаToolStripMenuItem1.Name = "клиентаToolStripMenuItem1";
+            this.клиентаToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.клиентаToolStripMenuItem1.Text = "Клиента";
+            this.клиентаToolStripMenuItem1.Click += new System.EventHandler(this.FindClientsBtnClick);
+            // 
+            // автомобильToolStripMenuItem
+            // 
+            this.автомобильToolStripMenuItem.Name = "автомобильToolStripMenuItem";
+            this.автомобильToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.автомобильToolStripMenuItem.Text = "Автомобиля";
             // 
             // groupBox1
             // 
@@ -253,7 +252,7 @@ namespace diplom.src.forms
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(258, 44);
+            this.tabControl1.Location = new System.Drawing.Point(579, 44);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(239, 336);
@@ -290,12 +289,25 @@ namespace diplom.src.forms
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(225, 304);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // date
+            // 
+            this.date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.date.HeaderText = "Дата";
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.price.HeaderText = "Цена";
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(255, 28);
+            this.label7.Location = new System.Drawing.Point(576, 28);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 2;
@@ -365,7 +377,7 @@ namespace diplom.src.forms
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(500, 28);
+            this.label13.Location = new System.Drawing.Point(255, 28);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 13;
@@ -374,7 +386,7 @@ namespace diplom.src.forms
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage2);
-            this.tabControl2.Location = new System.Drawing.Point(503, 44);
+            this.tabControl2.Location = new System.Drawing.Point(258, 44);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(315, 336);
@@ -433,20 +445,6 @@ namespace diplom.src.forms
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
-            // date
-            // 
-            this.date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.date.HeaderText = "Дата";
-            this.date.Name = "date";
-            this.date.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.price.HeaderText = "Цена";
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            // 
             // Main
             // 
             this.BackColor = System.Drawing.Color.DimGray;
@@ -461,6 +459,7 @@ namespace diplom.src.forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -480,8 +479,6 @@ namespace diplom.src.forms
 
         #endregion
         private ToolStrip toolStrip1;
-        private ToolStripButton toolStripButton1;
-        private ToolStripButton toolStripButton2;
         private GroupBox groupBox1;
         private Label phone;
         private Label mname;
@@ -506,7 +503,6 @@ namespace diplom.src.forms
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn Column3;
-        private ToolStripButton toolStripButton3;
         private ToolStripDropDownButton toolStripDropDownButton1;
         private ToolStripMenuItem наПокупкуToolStripMenuItem;
         private ToolStripMenuItem наРемонтToolStripMenuItem;
@@ -514,5 +510,9 @@ namespace diplom.src.forms
         private ToolStripMenuItem новыйАвтомобильToolStripMenuItem;
         private DataGridViewTextBoxColumn date;
         private DataGridViewTextBoxColumn price;
+        private ToolStripMenuItem клиентаToolStripMenuItem;
+        private ToolStripDropDownButton toolStripDropDownButton3;
+        private ToolStripMenuItem клиентаToolStripMenuItem1;
+        private ToolStripMenuItem автомобильToolStripMenuItem;
     }
 }

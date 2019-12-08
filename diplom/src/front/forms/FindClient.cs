@@ -1,5 +1,5 @@
 ﻿using diplom.src.back.entity;
-using diplom.src.data.exception;
+using diplom.src.back.exception;
 using diplom.src.service;
 using diplom.src.service.impl;
 using System;
@@ -35,14 +35,11 @@ namespace diplom.src.forms {
                 {
                     filter.inn = int.Parse(inn.Text);
                 }
-                main.updateClientTable(service.findBy(filter));
-                //main.updateState(service.findByInn(int.Parse(inn.Text)));
+                main.updateClientTable(service.GetByFilter(filter));
                 Close();
             } catch (EntityNotFoundException exception) {
                 MessageBox.Show(exception.Message);
             }
         }
-
     }
-
 }

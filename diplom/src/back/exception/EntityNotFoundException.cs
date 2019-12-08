@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace diplom.src.data.exception
+namespace diplom.src.back.exception
 {
     class EntityNotFoundException : SystemException
     {
