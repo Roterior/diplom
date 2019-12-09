@@ -21,6 +21,7 @@ namespace diplom.src.forms
         private OrderBuyCar currentOrderInfo;
         private List<Client> clients;
         private Point mouseLocation;
+        private List<CurrentOrder> list;
 
         public Main()
         {
@@ -34,7 +35,21 @@ namespace diplom.src.forms
                 for (int i = 0; i < tabControl1.TabPages.Count; i++) {
                     tabControl1.TabPages.Remove(tabControl1.TabPages[i]);
                 }
-                int pages = client != null && client.orders != null ? client.orders.Count / 8 + 1 : 1;
+                list = new List<CurrentOrder>();
+                if (null != client)
+                {
+                    if(null != client.OrderRepairCars && client.OrderRepairCars.Count > 0)
+                    {
+                        client.OrderRepairCars.ForEach(e => 
+                            list.Add(new CurrentOrder { date = e.Timestamp, price = e.Price, type = "Ремонт", id = e.Id }));
+                    }
+                    if (null != client.OrderBuyCars && client.OrderBuyCars.Count > 0)
+                    {
+                        client.OrderBuyCars.ForEach(e =>
+                            list.Add(new CurrentOrder { date = e.timestamp, price = e.price, type = "Покупка", id = e.id }));
+                    }
+                }
+                int pages = list.Count > 0 ? list.Count / 8 + 1 : 1;
                 List<TabPage> tabPages = new List<TabPage>(pages);
                 for (int i = 0; i < pages; i++) {
                     TabPage tabPage = new TabPage((i + 1).ToString());
@@ -47,6 +62,8 @@ namespace diplom.src.forms
                     dataGrid.AllowUserToDeleteRows = false;
                     dataGrid.RowHeadersVisible = false;
                     dataGrid.Dock = DockStyle.Fill;
+                    dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                    dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     DataGridViewCell cell = new DataGridViewTextBoxCell();
                     DataGridViewColumn column = new DataGridViewColumn(cell);
                     column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -54,6 +71,7 @@ namespace diplom.src.forms
                     column.HeaderText = "Дата";
                     dataGrid.Columns.Add(column);
                     dataGrid.Columns.Add("price", "Цена");
+                    dataGrid.Columns.Add("type", "Тип");
                     dataGrid.ReadOnly = true;
                     dataGrid.BackgroundColor = SystemColors.Control;
                     dataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -64,33 +82,29 @@ namespace diplom.src.forms
                     tabControl1.TabPages.Add(tabPage);
                     tabPages.Add(tabPage);
                 }
-                List<List<OrderBuyCar>> pagesOrder = new List<List<OrderBuyCar>>(pages);
+                List<List<CurrentOrder>> pagesOrder = new List<List<CurrentOrder>>(pages);
                 for (int i = 0; i < pagesOrder.Capacity; i++)
                 {
-                    pagesOrder.Add(new List<OrderBuyCar>(8));
+                    pagesOrder.Add(new List<CurrentOrder>(8));
                 }
                 pagesOrder.ForEach(page =>
                 {
                     int start = pagesOrder.IndexOf(page) * 8;
                     for (int i = start; i < start + 8; i++)
                     {
-                        if (i >= client.orders.Count) break;
-                        page.Add(client.orders[i]);
+                        if (i >= list.Count) break;
+                        page.Add(list[i]);
                     }
                 });
                 tabPages.ForEach(page =>
-                {
                     pagesOrder[tabControl1.TabPages.IndexOf(page)].ForEach(order =>
-                    {
                         ((DataGridView)page.Controls[0]).Rows.Add(
-                            String.Format("{0:dd/MM/yyyy}", order.timestamp.GetValueOrDefault()), order.price);
-                    });
-                });
-                if (client.orders != null && client.orders.Count > 0)
+                            String.Format("{0:dd/MM/yyyy}", order.date.GetValueOrDefault()), order.price, order.type)));
+                if (client.OrderBuyCars != null && client.OrderBuyCars.Count > 0)
                 {
                     if (currentOrderInfo == null)
                     {
-                        updateOrderInfo(client.orders[0]);
+                        updateOrderInfo(client.OrderBuyCars[0]);
                     }
                 }
                 else
@@ -120,7 +134,6 @@ namespace diplom.src.forms
                 label10.Text = "Дата создания: " + String.Format("{0:dd/MM/yyyy}", order.timestamp.GetValueOrDefault());
                 label12.Text = "Время создания: " + String.Format("{0:HH/mm/ss}", order.timestamp.GetValueOrDefault());
                 label11.Text = "Общая стоимость: " + order.price;
-
             }
         }
 
@@ -129,11 +142,21 @@ namespace diplom.src.forms
             DataGridView dataGrid = (DataGridView)sender;
             int page = int.Parse(dataGrid.Name.Substring("dataGridView".Length)) - 1;
             OrderBuyCar selected = null;
+            //OrderBuyCar obc = null;
+            OrderRepairCar orc = null;
+            CurrentOrder current = list[page * 8 + e.RowIndex];
             if (e.RowIndex != -1 && currentClient != null)
             {
-                selected = currentClient.orders[page * 8 + e.RowIndex];
+                try
+                {
+                    selected = currentClient.OrderBuyCars.Find(o => o.id == current.id);
+                }
+                catch
+                {
+                    orc = currentClient.OrderRepairCars.Find(o => o.Id == current.id);
+                }
             }
-            if (selected != null && selected != currentOrderInfo)
+            if ((selected != null || orc != null) && selected != currentOrderInfo)
             {
                 currentOrderInfo = selected;
                 updateOrderInfo(currentOrderInfo);
@@ -175,13 +198,15 @@ namespace diplom.src.forms
                     dataGrid.AllowUserToDeleteRows = false;
                     dataGrid.RowHeadersVisible = false;
                     dataGrid.Dock = DockStyle.Fill;
+                    dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+                    dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     DataGridViewCell cell = new DataGridViewTextBoxCell();
                     DataGridViewColumn column = new DataGridViewColumn(cell);
                     column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     column.Frozen = false;
-                    column.HeaderText = "Имя";
+                    column.HeaderText = "Фамилия";
                     dataGrid.Columns.Add(column);
-                    dataGrid.Columns.Add("lname", "Фамилия");
+                    dataGrid.Columns.Add("lname", "Имя");
                     dataGrid.Columns.Add("inn", "ИНН");
                     dataGrid.ReadOnly = true;
                     dataGrid.BackgroundColor = SystemColors.Control;
@@ -294,6 +319,15 @@ namespace diplom.src.forms
         private void MinimizeBtn(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private class CurrentOrder
+        {
+            internal Guid id;
+            internal DateTimeOffset? date;
+            internal decimal? price;
+            internal string type;
+            public CurrentOrder(){}
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using diplom.src.back.entity;
+using diplom.src.back.service;
+using diplom.src.back.service.impl;
 using diplom.src.forms;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,8 @@ namespace diplom.src.front.forms
 {
     public partial class CreateOrderRepairCar : Form
     {
+        private readonly IOrderRepairCar orderService = OrderRepairCarServiceImpl.GetService();
+
         public CreateOrderRepairCar()
         {
             InitializeComponent();
@@ -39,7 +43,21 @@ namespace diplom.src.front.forms
                 Thread.Sleep(250);
             }
             progressBar1.Value = 0;
-            Close();
+            repairPrice.Text = "Цена ремонта: 500Р";
+            repairTime.Text = "Время ремонта: 5 дней";
+            checkDate.Text = "Дата диагностики: " + DateTimeOffset.Now;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OrderRepairCar orderRepairCar = new OrderRepairCar
+            {
+                Status = "В ремонте",
+                Timestamp = DateTimeOffset.Now,
+                Price = 500,
+                ClientId = Main.currentClient.id
+            };
+            orderService.Create(orderRepairCar);
         }
     }
 }

@@ -53,8 +53,6 @@ namespace diplom.src.forms
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -69,6 +67,9 @@ namespace diplom.src.forms
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -94,7 +95,7 @@ namespace diplom.src.forms
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStrip1.Size = new System.Drawing.Size(822, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(750, 27);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragOnMouseDown);
             this.toolStrip1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragOnMouseMove);
@@ -108,20 +109,20 @@ namespace diplom.src.forms
             this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(90, 24);
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(72, 24);
             this.toolStripDropDownButton2.Text = "Добавить";
             // 
             // клиентаToolStripMenuItem
             // 
             this.клиентаToolStripMenuItem.Name = "клиентаToolStripMenuItem";
-            this.клиентаToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
+            this.клиентаToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.клиентаToolStripMenuItem.Text = "Клиента";
             this.клиентаToolStripMenuItem.Click += new System.EventHandler(this.AddNewClientOnBtnClick);
             // 
             // новыйАвтомобильToolStripMenuItem
             // 
             this.новыйАвтомобильToolStripMenuItem.Name = "новыйАвтомобильToolStripMenuItem";
-            this.новыйАвтомобильToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
+            this.новыйАвтомобильToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.новыйАвтомобильToolStripMenuItem.Text = "Новый Автомобиль";
             this.новыйАвтомобильToolStripMenuItem.Click += new System.EventHandler(this.новыйАвтомобильToolStripMenuItem_Click);
             // 
@@ -134,7 +135,7 @@ namespace diplom.src.forms
             this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(119, 24);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(94, 24);
             this.toolStripDropDownButton1.Text = "Создать заказ";
             // 
             // наПокупкуToolStripMenuItem
@@ -142,7 +143,7 @@ namespace diplom.src.forms
             this.наПокупкуToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.наПокупкуToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.наПокупкуToolStripMenuItem.Name = "наПокупкуToolStripMenuItem";
-            this.наПокупкуToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.наПокупкуToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.наПокупкуToolStripMenuItem.Text = "На покупку";
             this.наПокупкуToolStripMenuItem.Click += new System.EventHandler(this.createOrderBuyCar);
             // 
@@ -150,7 +151,7 @@ namespace diplom.src.forms
             // 
             this.наРемонтToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.наРемонтToolStripMenuItem.Name = "наРемонтToolStripMenuItem";
-            this.наРемонтToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.наРемонтToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.наРемонтToolStripMenuItem.Text = "На ремонт";
             this.наРемонтToolStripMenuItem.Click += new System.EventHandler(this.createOrderRepairCar);
             // 
@@ -163,20 +164,20 @@ namespace diplom.src.forms
             this.toolStripDropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton3.Image")));
             this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton3.Name = "toolStripDropDownButton3";
-            this.toolStripDropDownButton3.Size = new System.Drawing.Size(66, 24);
+            this.toolStripDropDownButton3.Size = new System.Drawing.Size(55, 24);
             this.toolStripDropDownButton3.Text = "Поиск";
             // 
             // клиентаToolStripMenuItem1
             // 
             this.клиентаToolStripMenuItem1.Name = "клиентаToolStripMenuItem1";
-            this.клиентаToolStripMenuItem1.Size = new System.Drawing.Size(179, 26);
+            this.клиентаToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.клиентаToolStripMenuItem1.Text = "Клиента";
             this.клиентаToolStripMenuItem1.Click += new System.EventHandler(this.FindClientsBtnClick);
             // 
             // автомобильToolStripMenuItem
             // 
             this.автомобильToolStripMenuItem.Name = "автомобильToolStripMenuItem";
-            this.автомобильToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.автомобильToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.автомобильToolStripMenuItem.Text = "Автомобиля";
             // 
             // toolStripButton1
@@ -187,7 +188,7 @@ namespace diplom.src.forms
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton1.Text = "Закрыть";
             this.toolStripButton1.Click += new System.EventHandler(this.CloseBtn);
             // 
@@ -198,7 +199,7 @@ namespace diplom.src.forms
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "Свернуть";
             this.toolStripButton2.Click += new System.EventHandler(this.MinimizeBtn);
             // 
@@ -225,7 +226,7 @@ namespace diplom.src.forms
             this.phone.Location = new System.Drawing.Point(6, 100);
             this.phone.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.phone.Name = "phone";
-            this.phone.Size = new System.Drawing.Size(78, 19);
+            this.phone.Size = new System.Drawing.Size(62, 15);
             this.phone.TabIndex = 3;
             this.phone.Text = "Телефон: ";
             // 
@@ -234,7 +235,7 @@ namespace diplom.src.forms
             this.inn.AutoSize = true;
             this.inn.Location = new System.Drawing.Point(6, 80);
             this.inn.Name = "inn";
-            this.inn.Size = new System.Drawing.Size(42, 17);
+            this.inn.Size = new System.Drawing.Size(34, 13);
             this.inn.TabIndex = 1;
             this.inn.Text = "ИНН:";
             // 
@@ -245,7 +246,7 @@ namespace diplom.src.forms
             this.mname.Location = new System.Drawing.Point(6, 60);
             this.mname.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.mname.Name = "mname";
-            this.mname.Size = new System.Drawing.Size(86, 19);
+            this.mname.Size = new System.Drawing.Size(64, 15);
             this.mname.TabIndex = 2;
             this.mname.Text = "Отчество: ";
             // 
@@ -254,7 +255,7 @@ namespace diplom.src.forms
             this.lname.AutoSize = true;
             this.lname.Location = new System.Drawing.Point(6, 20);
             this.lname.Name = "lname";
-            this.lname.Size = new System.Drawing.Size(74, 17);
+            this.lname.Size = new System.Drawing.Size(59, 13);
             this.lname.TabIndex = 0;
             this.lname.Text = "Фамилия:";
             // 
@@ -264,7 +265,7 @@ namespace diplom.src.forms
             this.address.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.address.Location = new System.Drawing.Point(6, 120);
             this.address.Name = "address";
-            this.address.Size = new System.Drawing.Size(62, 19);
+            this.address.Size = new System.Drawing.Size(48, 15);
             this.address.TabIndex = 1;
             this.address.Text = "Адрес: ";
             // 
@@ -274,27 +275,27 @@ namespace diplom.src.forms
             this.fname.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fname.Location = new System.Drawing.Point(6, 40);
             this.fname.Name = "fname";
-            this.fname.Size = new System.Drawing.Size(45, 19);
+            this.fname.Size = new System.Drawing.Size(34, 15);
             this.fname.TabIndex = 0;
             this.fname.Text = "Имя:";
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(579, 44);
+            this.tabControl1.Location = new System.Drawing.Point(507, 44);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(239, 336);
+            this.tabControl1.Size = new System.Drawing.Size(233, 336);
             this.tabControl1.TabIndex = 11;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
             this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(231, 307);
+            this.tabPage1.Size = new System.Drawing.Size(225, 310);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "1";
             // 
@@ -306,10 +307,11 @@ namespace diplom.src.forms
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.date,
-            this.price});
+            this.price,
+            this.type});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -317,31 +319,15 @@ namespace diplom.src.forms
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(225, 301);
+            this.dataGridView1.Size = new System.Drawing.Size(219, 304);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // date
-            // 
-            this.date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.date.HeaderText = "Дата";
-            this.date.MinimumWidth = 6;
-            this.date.Name = "date";
-            this.date.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.price.HeaderText = "Цена";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(576, 28);
+            this.label7.Location = new System.Drawing.Point(504, 28);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 17);
+            this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 2;
             this.label7.Text = "Заказы:";
             // 
@@ -364,7 +350,7 @@ namespace diplom.src.forms
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(6, 40);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(120, 17);
+            this.label12.Size = new System.Drawing.Size(94, 13);
             this.label12.TabIndex = 5;
             this.label12.Text = "Время создания:";
             // 
@@ -373,7 +359,7 @@ namespace diplom.src.forms
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(6, 60);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(130, 17);
+            this.label11.Size = new System.Drawing.Size(102, 13);
             this.label11.TabIndex = 4;
             this.label11.Text = "Общая стоимость:";
             // 
@@ -382,7 +368,7 @@ namespace diplom.src.forms
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(6, 20);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(112, 17);
+            this.label10.Size = new System.Drawing.Size(87, 13);
             this.label10.TabIndex = 3;
             this.label10.Text = "Дата создания:";
             // 
@@ -402,7 +388,7 @@ namespace diplom.src.forms
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(6, 80);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(82, 17);
+            this.label8.Size = new System.Drawing.Size(63, 13);
             this.label8.TabIndex = 0;
             this.label8.Text = "Описание: ";
             // 
@@ -411,7 +397,7 @@ namespace diplom.src.forms
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(255, 28);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(70, 17);
+            this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 13;
             this.label13.Text = "Клиенты:";
             // 
@@ -421,17 +407,17 @@ namespace diplom.src.forms
             this.tabControl2.Location = new System.Drawing.Point(258, 44);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(315, 336);
+            this.tabControl2.Size = new System.Drawing.Size(243, 336);
             this.tabControl2.TabIndex = 14;
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Transparent;
             this.tabPage2.Controls.Add(this.dataGridView2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(307, 307);
+            this.tabPage2.Size = new System.Drawing.Size(235, 310);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "1";
             // 
@@ -443,7 +429,7 @@ namespace diplom.src.forms
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn1,
@@ -455,12 +441,13 @@ namespace diplom.src.forms
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(301, 301);
+            this.dataGridView2.Size = new System.Drawing.Size(229, 304);
             this.dataGridView2.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.FillWeight = 101.4088F;
             this.dataGridViewTextBoxColumn2.HeaderText = "Фамилия";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
@@ -469,6 +456,7 @@ namespace diplom.src.forms
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.FillWeight = 106.599F;
             this.dataGridViewTextBoxColumn1.HeaderText = "Имя";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -476,16 +464,40 @@ namespace diplom.src.forms
             // 
             // Column3
             // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.FillWeight = 91.99224F;
             this.Column3.HeaderText = "Отчество";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 125;
+            // 
+            // date
+            // 
+            this.date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.date.HeaderText = "Дата";
+            this.date.MinimumWidth = 6;
+            this.date.Name = "date";
+            this.date.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.price.HeaderText = "Цена";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
+            // type
+            // 
+            this.type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.type.HeaderText = "Тип";
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
             // 
             // Main
             // 
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(822, 384);
+            this.ClientSize = new System.Drawing.Size(750, 384);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.groupBox3);
@@ -537,21 +549,22 @@ namespace diplom.src.forms
         private TabControl tabControl2;
         private TabPage tabPage2;
         private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn Column3;
         private ToolStripDropDownButton toolStripDropDownButton1;
         private ToolStripMenuItem наПокупкуToolStripMenuItem;
         private ToolStripMenuItem наРемонтToolStripMenuItem;
         private ToolStripDropDownButton toolStripDropDownButton2;
         private ToolStripMenuItem новыйАвтомобильToolStripMenuItem;
-        private DataGridViewTextBoxColumn date;
-        private DataGridViewTextBoxColumn price;
         private ToolStripMenuItem клиентаToolStripMenuItem;
         private ToolStripDropDownButton toolStripDropDownButton3;
         private ToolStripMenuItem клиентаToolStripMenuItem1;
         private ToolStripMenuItem автомобильToolStripMenuItem;
         private ToolStripButton toolStripButton1;
         private ToolStripButton toolStripButton2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn date;
+        private DataGridViewTextBoxColumn price;
+        private DataGridViewTextBoxColumn type;
     }
 }

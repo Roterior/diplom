@@ -17,5 +17,7 @@ namespace diplom.src.back.context
         public DbSet<NewCar> NewCars { get; set; }
 
         public DbSet<ClientCar> ClientCars { get; set; }
+
+        public DbSet<OrderRepairCar> OrderRepairCars { get; set; }
     }
 }

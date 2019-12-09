@@ -46,6 +46,8 @@ namespace diplom.src.entity
 
         [ForeignKey(name: "ClientId")] public List<ClientCar> ClientsCars { get; set; }
 
-        [ForeignKey(name: "clientId")] public List<OrderBuyCar> orders { get; set; }
+        [ForeignKey(name: "clientId")] public List<OrderBuyCar> OrderBuyCars { get; set; }
+
+        [ForeignKey(name: "ClientId")] public List<OrderRepairCar> OrderRepairCars { get; set; }
     }
 }

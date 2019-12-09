@@ -93,6 +93,7 @@
     <Compile Include="src\back\entity\OrderRepairCar.cs" />
     <Compile Include="src\back\service\IClientCarService.cs" />
     <Compile Include="src\back\service\impl\ClientCarServiceImpl.cs" />
+    <Compile Include="src\back\service\impl\OrderRepairCarServiceImpl.cs" />
     <Compile Include="src\back\service\INewCarService.cs" />
     <Compile Include="src\back\service\impl\CarServiceImpl.cs" />
     <Compile Include="src\back\context\ClientContext.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\back\entity\Order.cs" />
+    <Compile Include="src\back\service\IOrderRepairCar.cs" />
     <Compile Include="src\front\forms\AddNewCar.cs">
       <SubType>Form</SubType>
     </Compile>
