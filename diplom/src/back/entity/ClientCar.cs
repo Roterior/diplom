@@ -20,8 +20,6 @@ namespace diplom.src.back.entity
 
         public String description { get; set; }
 
-        [ForeignKey(name:"id")] public Client clientId { get; set; }
-
+        public Guid ClientId { get; set; }
     }
-
 }

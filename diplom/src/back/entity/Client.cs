@@ -44,6 +44,8 @@ namespace diplom.src.entity
 
         public int? passportSeries { get; set; }
 
+        [ForeignKey(name: "ClientId")] public List<ClientCar> ClientsCars { get; set; }
+
         [ForeignKey(name: "clientId")] public List<OrderBuyCar> orders { get; set; }
     }
 }

@@ -140,10 +140,7 @@ namespace diplom.src.forms
             }
         }
 
-        private void createOrderBuyCar(object sender, EventArgs e)
-        {
-            new CreateOrderBuyCar(this).Show();
-        }
+        private void createOrderBuyCar(object sender, EventArgs e) => new CreateOrderBuyCar(this).Show();
 
         private void createOrderRepairCar(object sender, EventArgs e)
         {

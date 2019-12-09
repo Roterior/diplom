@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace diplom.src.back.entity
 {
-    class OrderRepairCar
+    public class OrderRepairCar
     {
+        public OrderRepairCar() {}
+
+        
     }
 }

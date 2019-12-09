@@ -31,6 +31,7 @@ namespace diplom.src.service.impl {
             context = new ClientContext();
             Client customer = context.Clients
                 .Include(c => c.orders)
+                .Include(c => c.ClientsCars)
                 .FirstOrDefault(c => c.id.Equals(id));
             if (customer == null) {
                 throw new EntityNotFoundException("Entity with required id not found: " + id);
@@ -48,7 +49,7 @@ namespace diplom.src.service.impl {
         }
 
         public List<Client> GetByFilter(FilterClient filter) {
-            IQueryable<Client> query = context.Clients.Include(c => c.orders);
+            IQueryable<Client> query = context.Clients.Include(c => c.orders).Include(c => c.ClientsCars);
             if (filter.fname != "")
             {
                 query = query.Where(c => c.firstName.Contains(filter.fname));
@@ -71,6 +72,7 @@ namespace diplom.src.service.impl {
         public Client GetByInn(int? inn) {
             Client client = context.Clients
                 .Include(c => c.orders)
+                .Include(c => c.ClientsCars)
                 .Where(c => c.inn == inn)
                 .FirstOrDefault();
             if (client == null) {

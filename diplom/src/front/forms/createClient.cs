@@ -9,12 +9,16 @@ using System.Linq;
 using System.Windows.Forms;
 using diplom.src.service;
 using diplom.src.service.impl;
+using diplom.src.back.entity;
+using diplom.src.back.service;
+using diplom.src.back.service.impl;
 
 namespace diplom.src.forms {
 
     public partial class CreateClient : Form {
 
-        private readonly IClientService customerService = ClientServiceImpl.GetService();
+        private readonly IClientService service = ClientServiceImpl.GetService();
+        private readonly IClientCarService carService = ClientCarServiceImpl.GetService();
         private readonly Main main;
 
         public CreateClient() {
@@ -42,8 +46,29 @@ namespace diplom.src.forms {
             if (inn.Text == "" || pNum.Text == "" || pSeries.Text == "") {
                 MessageBox.Show("Вы не ввели одно из важных полей: инн, номер паспорта, серия паспорта!");
             } else {
-                Client client = customerService.Create(new Client(
-                    fname.Text, mname.Text, lname.Text, phone.Text, address.Text, int.Parse(inn.Text), int.Parse(pNum.Text), int.Parse(pSeries.Text)));
+                //Client client = customerService.Create(new Client(
+                //    fname.Text, mname.Text, lname.Text, phone.Text, address.Text, int.Parse(inn.Text), int.Parse(pNum.Text), int.Parse(pSeries.Text)));
+                Client client = service.Create(new Client
+                {
+                    id = Guid.NewGuid(),
+                    firstName = fname.Text,
+                    middleName = mname.Text,
+                    lastName = lname.Text,
+                    phone = phone.Text,
+                    address = address.Text,
+                    inn = int.Parse(inn.Text),
+                    passportId = int.Parse(pNum.Text),
+                    passportSeries = int.Parse(pSeries.Text)
+                });
+                ClientCar car = new ClientCar
+                {
+                    ClientId = client.id,
+                    maker = maker.Text,
+                    model = model.Text,
+                    releaseYear = int.Parse(releaseYear.Text),
+                    description = description.Text
+                };
+                carService.Create(car);
                 main.updateClientTable(new List<Client>(1) { client });
                 Close();
             }

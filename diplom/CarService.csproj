@@ -54,7 +54,8 @@
     <StartupObject>diplom.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>wrench.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
@@ -91,6 +92,7 @@
     <Compile Include="src\back\entity\OrderBuyCar.cs" />
     <Compile Include="src\back\entity\OrderRepairCar.cs" />
     <Compile Include="src\back\service\IClientCarService.cs" />
+    <Compile Include="src\back\service\impl\ClientCarServiceImpl.cs" />
     <Compile Include="src\back\service\INewCarService.cs" />
     <Compile Include="src\back\service\impl\CarServiceImpl.cs" />
     <Compile Include="src\back\context\ClientContext.cs" />
@@ -198,8 +200,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\closeBtn.png" />
-    <Content Include="wrench.ico" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\minimize.png" />
+    <None Include="Resources\wrench.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
