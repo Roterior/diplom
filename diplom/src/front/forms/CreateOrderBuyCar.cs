@@ -1,18 +1,10 @@
 ﻿using diplom.src.back.entity;
 using diplom.src.back.service;
 using diplom.src.back.service.impl;
-using diplom.src.entity;
 using diplom.src.forms;
-using diplom.src.service;
-using diplom.src.service.impl;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace diplom.src.front.forms
@@ -20,11 +12,11 @@ namespace diplom.src.front.forms
     public partial class CreateOrderBuyCar : Form
     {
         private readonly IClientService clientService = ClientServiceImpl.GetService();
-        private readonly INewCarService service = CarServiceImpl.GetService();
-        private readonly IOrderService orderService = OrderServiceImpl.GetService();
+        private readonly ICarNewService service = CarNewServiceImpl.GetService();
+        private readonly IOrderBuyService orderService = OrderBuyServiceImpl.GetService();
         private readonly Main main;
-        private NewCar currentNewCar;
-        private List<NewCar> newCars;
+        private CarNew currentNewCar;
+        private List<CarNew> newCars;
 
         public CreateOrderBuyCar()
         {
@@ -32,10 +24,7 @@ namespace diplom.src.front.forms
             loadNewCars();
         }
 
-        public CreateOrderBuyCar(Main main) : this()
-        {
-            this.main = main;
-        }
+        public CreateOrderBuyCar(Main main) : this() => this.main = main;
 
         private void loadNewCars()
         {
@@ -77,10 +66,10 @@ namespace diplom.src.front.forms
                     tabControl1.TabPages.Add(tabPage);
                     tabPages.Add(tabPage);
                 }
-                List<List<NewCar>> pagesOrder = new List<List<NewCar>>(pages);
+                List<List<CarNew>> pagesOrder = new List<List<CarNew>>(pages);
                 for (int i = 0; i < pagesOrder.Capacity; i++)
                 {
-                    pagesOrder.Add(new List<NewCar>(8));
+                    pagesOrder.Add(new List<CarNew>(8));
                 }
                 pagesOrder.ForEach(page =>
                 {
@@ -91,12 +80,11 @@ namespace diplom.src.front.forms
                         page.Add(newCars[i]);
                     }
                 });
-
                 tabPages.ForEach(page =>
                 {
                     pagesOrder[tabControl1.TabPages.IndexOf(page)].ForEach(car =>
                     {
-                        ((DataGridView)page.Controls[0]).Rows.Add(car.maker, car.model);
+                        ((DataGridView)page.Controls[0]).Rows.Add(car.Maker, car.Model);
                     });
                 });
                 if (newCars != null && newCars.Count > 0)
@@ -120,7 +108,7 @@ namespace diplom.src.front.forms
         {
             DataGridView dataGrid = (DataGridView)sender;
             int page = int.Parse(dataGrid.Name.Substring("dataGridView".Length)) - 1;
-            NewCar selected = newCars[page * 8 + e.RowIndex];
+            CarNew selected = newCars[page * 8 + e.RowIndex];
             if (currentNewCar == null || selected != currentNewCar)
             {
                 currentNewCar = selected;
@@ -128,33 +116,23 @@ namespace diplom.src.front.forms
             }
         }
 
-        private void updateInfo(NewCar car)
+        private void updateInfo(CarNew car)
         {
-
-            maker.Text = "Марка:" + car.maker;
-            model.Text = "Модель:" + car.model;
-            price.Text = "Стоимость:" + car.price;
+            maker.Text = "Марка:" + car.Maker;
+            model.Text = "Модель:" + car.Model;
+            price.Text = "Стоимость:" + car.Price;
         }
 
         private void BuySelectedCarBtnClick(object sender, EventArgs e)
         {
-/*            Main.currentClient.orders.Add(new OrderBuyCar
+            orderService.Create(new OrderBuy
             {
-                price = currentNewCar.price,
-                timestamp = DateTimeOffset.Now,
-                description = "test",
-                newCar = currentNewCar
-            });*/
-            OrderBuyCar order = new OrderBuyCar
-            {
-                clientId = Main.currentClient.id,
-                NewCarId = currentNewCar.id,
-                price = currentNewCar.price,
-                timestamp = DateTimeOffset.Now,
-                description = "test"
-            };
-            orderService.Create(order);
-            //clientService.Update(Main.currentClient);
+                ClientId = Main.currentClient.Id,
+                NewCarId = currentNewCar.Id,
+                Price = currentNewCar.Price,
+                Timestamp = DateTimeOffset.Now,
+                Description = "test"
+            });
             main.updateClientOrders(Main.currentClient);
             Close();
         }

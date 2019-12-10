@@ -3,21 +3,14 @@ using diplom.src.back.service;
 using diplom.src.back.service.impl;
 using diplom.src.forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace diplom.src.front.forms
 {
     public partial class CreateOrderRepairCar : Form
     {
-        private readonly IOrderRepairCar orderService = OrderRepairCarServiceImpl.GetService();
+        private readonly IOrderRepairService orderService = OrderRepairServiceImpl.GetService();
 
         public CreateOrderRepairCar()
         {
@@ -27,12 +20,12 @@ namespace diplom.src.front.forms
 
         private void LoadClientCar()
         {
-            ClientCar car = Main.currentClient.ClientsCars[0];
-            maker.Text = car.maker;
-            model.Text = car.model;
-            releaseYear.Text = car.releaseYear.ToString();
+            CarClient car = Main.currentClient.CarClientList[0];
+            maker.Text = car.Maker;
+            model.Text = car.Model;
+            releaseYear.Text = car.ReleaseYear.ToString();
             status.Text = "Поломана жизнью";
-            description.Text = car.description;
+            description.Text = car.Description;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,16 +41,15 @@ namespace diplom.src.front.forms
             checkDate.Text = "Дата диагностики: " + DateTimeOffset.Now;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void CreateOrderRepairBtn(object sender, EventArgs e)
         {
-            OrderRepairCar orderRepairCar = new OrderRepairCar
+            orderService.Create(new OrderRepair
             {
                 Status = "В ремонте",
                 Timestamp = DateTimeOffset.Now,
                 Price = 500,
-                ClientId = Main.currentClient.id
-            };
-            orderService.Create(orderRepairCar);
+                ClientId = Main.currentClient.Id
+            });
         }
     }
 }

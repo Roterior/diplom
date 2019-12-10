@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace diplom.src.forms
+namespace diplom.src.front.forms
 {
     partial class CreateClient : Form
     {

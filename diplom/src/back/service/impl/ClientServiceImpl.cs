@@ -1,84 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
-using diplom.src.entity;
-using System.Data.Entity.Infrastructure;
 using diplom.src.back.entity;
 using diplom.src.back.context;
-using diplom.src.back.exception;
+using diplom.src.back.dto;
 
-namespace diplom.src.service.impl {
+namespace diplom.src.back.service.impl
+{
+    class ClientServiceImpl : IClientService
+    {
+        private static readonly IClientService service = new ClientServiceImpl();
+        private readonly Context context;
 
-    class ClientServiceImpl : IClientService {
+        public ClientServiceImpl() => context = new Context();
 
-        private static IClientService service = new ClientServiceImpl();
-        private ClientContext context;
+        public static IClientService GetService() => service;
 
-        public ClientServiceImpl() {
-            context = new ClientContext();
-        }
-
-        public Client Create(Client entity) {
-            context.Clients.Add(entity);
+        public Client Create(Client entity)
+        {
+            context.Client.Add(entity);
             context.SaveChanges();
             return entity;
         }
 
-        public Client GetById(Guid id) {
-            context = new ClientContext();
-            Client customer = context.Clients
-                .Include(c => c.OrderBuyCars)
-                .Include(c => c.ClientsCars).Include(c => c.OrderRepairCars)
-                .FirstOrDefault(c => c.id.Equals(id));
-            if (customer == null) {
-                throw new EntityNotFoundException("Entity with required id not found: " + id);
-            }
-            return customer;
+        public Client GetById(Guid id)
+        {
+            return context.Client
+                .Include(c => c.OrderBuyList)
+                .Include(c => c.CarClientList)
+                .Include(c => c.OrderRepairList)
+                .FirstOrDefault(c => c.Id.Equals(id));
         }
 
-        public static IClientService GetService() {
-            return service;
-        }
-
-        public Client Update(Client entity) {
+        public Client Update(Client entity)
+        {
             context.SaveChanges();
             return entity;
         }
 
-        public List<Client> GetByFilter(FilterClient filter) {
-            IQueryable<Client> query = context.Clients.Include(c => c.OrderBuyCars).Include(c => c.ClientsCars).Include(c => c.OrderRepairCars);
-            if (filter.fname != "")
+        public List<Client> GetByFilter(FilterClient filter)
+        {
+            IQueryable<Client> query = context.Client
+                .Include(c => c.OrderBuyList)
+                .Include(c => c.CarClientList)
+                .Include(c => c.OrderRepairList);
+            if (filter.FirstName != "")
             {
-                query = query.Where(c => c.firstName.Contains(filter.fname));
+                query = query.Where(c => c.FirstName.Contains(filter.FirstName));
             }
-            if (filter.mname != "")
+            if (filter.MiddleName != "")
             {
-                query = query.Where(c => c.middleName.Contains(filter.mname));
+                query = query.Where(c => c.MiddleName.Contains(filter.MiddleName));
             }
-            if (filter.lname != "")
+            if (filter.LastName != "")
             {
-                query = query.Where(c => c.lastName.Contains(filter.lname));
+                query = query.Where(c => c.LastName.Contains(filter.LastName));
             }
-            if (filter.inn != null && filter.inn != 0)
+            if (filter.Inn != null && filter.Inn != 0)
             {
-                query = query.Where(c => c.inn.ToString().Contains(filter.inn.ToString()));
+                query = query.Where(c => c.Inn.ToString().Contains(filter.Inn.ToString()));
             }
             return query.ToList();
-        }
-
-        public Client GetByInn(int? inn) {
-            Client client = context.Clients
-                .Include(c => c.OrderBuyCars)
-                .Include(c => c.ClientsCars).Include(c => c.OrderRepairCars)
-                .Where(c => c.inn == inn)
-                .FirstOrDefault();
-            if (client == null) {
-                throw new EntityNotFoundException(String.Format("Customer with required INN not found, {0}", inn));
-            }
-            return client;
+            /*return context.Client
+                .Include(c => c.OrderBuyList)
+                .Include(c => c.CarClientList)
+                .Include(c => c.OrderRepairList)
+                .Where(c => c.FirstName.Contains(filter.FirstName))
+                .Where(c => c.MiddleName.Contains(filter.MiddleName))
+                .Where(c => c.LastName.Contains(filter.LastName))
+                .Where(c => c.Inn.ToString().Contains(filter.Inn.ToString()))
+                .ToList();*/
         }
     }
 }

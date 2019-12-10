@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace diplom.src.back.entity
 {
-    [Table(name: "order_repair_car_t")]
-    public class OrderRepairCar
+    [Table("OrderRepair")]
+    public class OrderRepair
     {
-        public OrderRepairCar() {}
+        public OrderRepair() { }
 
         [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid Id { get; set; }
 

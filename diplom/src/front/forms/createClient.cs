@@ -1,33 +1,22 @@
-﻿using diplom.src.entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
 using System.Windows.Forms;
-using diplom.src.service;
-using diplom.src.service.impl;
 using diplom.src.back.entity;
 using diplom.src.back.service;
 using diplom.src.back.service.impl;
+using diplom.src.forms;
 
-namespace diplom.src.forms {
-
-    public partial class CreateClient : Form {
-
+namespace diplom.src.front.forms
+{
+    public partial class CreateClient : Form
+    {
         private readonly IClientService service = ClientServiceImpl.GetService();
-        private readonly IClientCarService carService = ClientCarServiceImpl.GetService();
+        private readonly ICarClientService carService = CarClientServiceImpl.GetService();
         private readonly Main main;
 
-        public CreateClient() {
-            InitializeComponent();
-        }
+        public CreateClient() => InitializeComponent();
 
-        public CreateClient(Main main): this() {
-            this.main = main;
-        }
+        public CreateClient(Main main) : this() => this.main = main;
 
         private void allowOnlynumbers(object sender, EventArgs e) {
             if (System.Text.RegularExpressions.Regex.IsMatch(inn.Text, "[^0-9]")) {
@@ -46,29 +35,26 @@ namespace diplom.src.forms {
             if (inn.Text == "" || pNum.Text == "" || pSeries.Text == "") {
                 MessageBox.Show("Вы не ввели одно из важных полей: инн, номер паспорта, серия паспорта!");
             } else {
-                //Client client = customerService.Create(new Client(
-                //    fname.Text, mname.Text, lname.Text, phone.Text, address.Text, int.Parse(inn.Text), int.Parse(pNum.Text), int.Parse(pSeries.Text)));
                 Client client = service.Create(new Client
                 {
-                    id = Guid.NewGuid(),
-                    firstName = fname.Text,
-                    middleName = mname.Text,
-                    lastName = lname.Text,
-                    phone = phone.Text,
-                    address = address.Text,
-                    inn = int.Parse(inn.Text),
-                    passportId = int.Parse(pNum.Text),
-                    passportSeries = int.Parse(pSeries.Text)
+                    Id = Guid.NewGuid(),
+                    FirstName = fname.Text,
+                    MiddleName = mname.Text,
+                    LastName = lname.Text,
+                    Phone = phone.Text,
+                    Address = address.Text,
+                    Inn = int.Parse(inn.Text),
+                    PassportNumber = int.Parse(pNum.Text),
+                    PassportSeries = int.Parse(pSeries.Text)
                 });
-                ClientCar car = new ClientCar
+                carService.Create(new CarClient
                 {
-                    ClientId = client.id,
-                    maker = maker.Text,
-                    model = model.Text,
-                    releaseYear = int.Parse(releaseYear.Text),
-                    description = description.Text
-                };
-                carService.Create(car);
+                    ClientId = client.Id,
+                    Maker = maker.Text,
+                    Model = model.Text,
+                    ReleaseYear = int.Parse(releaseYear.Text),
+                    Description = description.Text
+                });
                 main.updateClientTable(new List<Client>(1) { client });
                 Close();
             }

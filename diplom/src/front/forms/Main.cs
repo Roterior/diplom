@@ -1,32 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using diplom.src.entity;
-using System.Data.Entity;
-using diplom.src.service;
-using diplom.src.service.impl;
 using diplom.src.front.forms;
 using diplom.src.back.entity;
 
 namespace diplom.src.forms
 {
-    public partial class Main
+    public partial class Main : Form
     {
         public static Client currentClient;
-        private OrderBuyCar currentOrderInfo;
+        private OrderBuy currentOrderInfo;
         private List<Client> clients;
         private Point mouseLocation;
         private List<CurrentOrder> list;
 
-        public Main()
-        {
-            InitializeComponent();
-        }
+        public Main() => InitializeComponent();
 
         public void updateClientOrders(Client client)
         {
@@ -38,15 +27,15 @@ namespace diplom.src.forms
                 list = new List<CurrentOrder>();
                 if (null != client)
                 {
-                    if(null != client.OrderRepairCars && client.OrderRepairCars.Count > 0)
+                    if(null != client.OrderRepairList && client.OrderRepairList.Count > 0)
                     {
-                        client.OrderRepairCars.ForEach(e => 
+                        client.OrderRepairList.ForEach(e => 
                             list.Add(new CurrentOrder { date = e.Timestamp, price = e.Price, type = "Ремонт", id = e.Id }));
                     }
-                    if (null != client.OrderBuyCars && client.OrderBuyCars.Count > 0)
+                    if (null != client.OrderBuyList && client.OrderBuyList.Count > 0)
                     {
-                        client.OrderBuyCars.ForEach(e =>
-                            list.Add(new CurrentOrder { date = e.timestamp, price = e.price, type = "Покупка", id = e.id }));
+                        client.OrderBuyList.ForEach(e =>
+                            list.Add(new CurrentOrder { date = e.Timestamp, price = e.Price, type = "Покупка", id = e.Id }));
                     }
                 }
                 int pages = list.Count > 0 ? list.Count / 8 + 1 : 1;
@@ -100,11 +89,11 @@ namespace diplom.src.forms
                     pagesOrder[tabControl1.TabPages.IndexOf(page)].ForEach(order =>
                         ((DataGridView)page.Controls[0]).Rows.Add(
                             String.Format("{0:dd/MM/yyyy}", order.date.GetValueOrDefault()), order.price, order.type)));
-                if (client.OrderBuyCars != null && client.OrderBuyCars.Count > 0)
+                if (client.OrderBuyList != null && client.OrderBuyList.Count > 0)
                 {
                     if (currentOrderInfo == null)
                     {
-                        updateOrderInfo(client.OrderBuyCars[0]);
+                        updateOrderInfo(client.OrderBuyList[0]);
                     }
                 }
                 else
@@ -119,7 +108,7 @@ namespace diplom.src.forms
             }
         }
 
-        private void updateOrderInfo(OrderBuyCar order)
+        private void updateOrderInfo(OrderBuy order)
         {
             if (null == order)
             {
@@ -130,10 +119,10 @@ namespace diplom.src.forms
             }
             else
             {
-                textBox3.Text = order.description;
-                label10.Text = "Дата создания: " + String.Format("{0:dd/MM/yyyy}", order.timestamp.GetValueOrDefault());
-                label12.Text = "Время создания: " + String.Format("{0:HH/mm/ss}", order.timestamp.GetValueOrDefault());
-                label11.Text = "Общая стоимость: " + order.price;
+                textBox3.Text = order.Description;
+                label10.Text = "Дата создания: " + String.Format("{0:dd/MM/yyyy}", order.Timestamp.GetValueOrDefault());
+                label12.Text = "Время создания: " + String.Format("{0:HH/mm/ss}", order.Timestamp.GetValueOrDefault());
+                label11.Text = "Общая стоимость: " + order.Price;
             }
         }
 
@@ -141,19 +130,19 @@ namespace diplom.src.forms
         {
             DataGridView dataGrid = (DataGridView)sender;
             int page = int.Parse(dataGrid.Name.Substring("dataGridView".Length)) - 1;
-            OrderBuyCar selected = null;
+            OrderBuy selected = null;
             //OrderBuyCar obc = null;
-            OrderRepairCar orc = null;
+            OrderRepair orc = null;
             CurrentOrder current = list[page * 8 + e.RowIndex];
             if (e.RowIndex != -1 && currentClient != null)
             {
                 try
                 {
-                    selected = currentClient.OrderBuyCars.Find(o => o.id == current.id);
+                    selected = currentClient.OrderBuyList.Find(o => o.Id == current.id);
                 }
                 catch
                 {
-                    orc = currentClient.OrderRepairCars.Find(o => o.Id == current.id);
+                    orc = currentClient.OrderRepairList.Find(o => o.Id == current.id);
                 }
             }
             if ((selected != null || orc != null) && selected != currentOrderInfo)
@@ -165,15 +154,9 @@ namespace diplom.src.forms
 
         private void createOrderBuyCar(object sender, EventArgs e) => new CreateOrderBuyCar(this).Show();
 
-        private void createOrderRepairCar(object sender, EventArgs e)
-        {
-            new CreateOrderRepairCar().Show();
-        }
+        private void createOrderRepairCar(object sender, EventArgs e) => new CreateOrderRepairCar().Show();
 
-        private void новыйАвтомобильToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new AddNewCar(this).Show();
-        }
+        private void новыйАвтомобильToolStripMenuItem_Click(object sender, EventArgs e) => new AddNewCar(this).Show();
 
         public void updateClientTable(List<Client> clients)
         {
@@ -206,8 +189,8 @@ namespace diplom.src.forms
                     column.Frozen = false;
                     column.HeaderText = "Фамилия";
                     dataGrid.Columns.Add(column);
-                    dataGrid.Columns.Add("lname", "Имя");
-                    dataGrid.Columns.Add("inn", "ИНН");
+                    dataGrid.Columns.Add("FirstName", "Имя");
+                    dataGrid.Columns.Add("Inn", "ИНН");
                     dataGrid.ReadOnly = true;
                     dataGrid.BackgroundColor = SystemColors.Control;
                     dataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -237,7 +220,7 @@ namespace diplom.src.forms
                 {
                     pagesOrder[tabControl2.TabPages.IndexOf(page)].ForEach(client =>
                     {
-                        ((DataGridView)page.Controls[0]).Rows.Add(client.firstName, client.lastName, client.inn);
+                        ((DataGridView)page.Controls[0]).Rows.Add(client.LastName, client.FirstName, client.Inn);
                     });
                 });
                 if (clients != null && clients.Count > 0)
@@ -278,48 +261,33 @@ namespace diplom.src.forms
 
         private void updateClientInfo()
         {
-            fname.Text = "Имя: " + currentClient.firstName;
-            mname.Text = "Отчество: " + currentClient.middleName;
-            lname.Text = "Фамилия: " + currentClient.lastName;
-            inn.Text = "ИНН: " + currentClient.inn;
-            phone.Text = "Телефон: " + currentClient.phone;
-            address.Text = "Адрес: " + currentClient.address;
+            fname.Text = "Имя: " + currentClient.FirstName;
+            mname.Text = "Отчество: " + currentClient.MiddleName;
+            lname.Text = "Фамилия: " + currentClient.LastName;
+            inn.Text = "ИНН: " + currentClient.Inn;
+            phone.Text = "Телефон: " + currentClient.Phone;
+            address.Text = "Адрес: " + currentClient.Address;
         }
 
-        private void AddNewClientOnBtnClick(object sender, EventArgs e)
-        {
-            new CreateClient(this).Show();
-        }
+        private void AddNewClientOnBtnClick(object sender, EventArgs e) => new CreateClient(this).Show();
 
-        private void FindClientsBtnClick(object sender, EventArgs e)
-        {
-            new FindClient(this).Show();
-        }
+        private void FindClientsBtnClick(object sender, EventArgs e) => new FindClient(this).Show();
 
-        private void DragOnMouseDown(object sender, MouseEventArgs e)
-        {
-            mouseLocation = new Point(-e.X, -e.Y);
-        }
+        private void DragOnMouseDown(object sender, MouseEventArgs e) => mouseLocation = new Point(-e.X, -e.Y);
 
         private void DragOnMouseMove(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
-                Point mousePose = Control.MousePosition;
+                Point mousePose = MousePosition;
                 mousePose.Offset(mouseLocation.X, mouseLocation.Y);
                 Location = mousePose;
             }
         }
 
-        private void CloseBtn(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void CloseBtn(object sender, EventArgs e) => Close();
 
-        private void MinimizeBtn(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
+        private void MinimizeBtn(object sender, EventArgs e) => WindowState = FormWindowState.Minimized;
 
         private class CurrentOrder
         {

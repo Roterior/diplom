@@ -1,53 +1,32 @@
-﻿using System;
+﻿using diplom.src.back.dto;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using diplom.src.back.entity;
 
-namespace diplom.src.entity
+namespace diplom.src.back.entity
 {
-
-    [Table(name: "client_t")]
-    public class Client
+    [Table("Client")]
+    public class Client : FilterClient
     {
         public Client() { }
 
-        public Client(String fname, String mname, String lname, String phone, String address, int? inn, int? pId, int? pSer) {
-            this.firstName = fname;
-            this.middleName = mname;
-            this.lastName = lname;
-            this.phone = phone;
-            this.address = address;
-            this.inn = inn;
-            this.passportId = pId;
-            this.passportSeries = pSer;
-        }
+        [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid Id { get; set; }
 
-        [Key] [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid id { get; set; }
+        [ForeignKey("ClientId")] public List<CarClient> CarClientList { get; set; }
 
-        public String firstName { get; set; }
+        [ForeignKey("ClientId")] public List<OrderBuy> OrderBuyList { get; set; }
 
-        public String middleName { get; set; }
+        [ForeignKey("ClientId")] public List<OrderRepair> OrderRepairList { get; set; }
 
-        public String lastName { get; set; }
+        public string Phone { get; set; }
 
-        public String phone { get; set; }
+        public string Address { get; set; }
 
-        public String address { get; set; }
+        public string Email { get; set; }
 
-        public int? inn { get; set; }
+        public int? PassportNumber { get; set; }
 
-        public int? passportId { get; set; }
-
-        public int? passportSeries { get; set; }
-
-        [ForeignKey(name: "ClientId")] public List<ClientCar> ClientsCars { get; set; }
-
-        [ForeignKey(name: "clientId")] public List<OrderBuyCar> OrderBuyCars { get; set; }
-
-        [ForeignKey(name: "ClientId")] public List<OrderRepairCar> OrderRepairCars { get; set; }
+        public int? PassportSeries { get; set; }
     }
 }
