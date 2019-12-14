@@ -1,7 +1,7 @@
 ﻿using diplom.src.back.entity;
 using System.Data.Entity;
 
-namespace diplom.src.back.context
+namespace diplom.src.back.utils.context
 {
     class Context : DbContext
     {

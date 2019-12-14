@@ -1,4 +1,4 @@
-﻿namespace diplom.src.back.interfaces
+﻿namespace diplom.src.back.utils.interfaces
 {
     interface ICrudService<T, K>
     {

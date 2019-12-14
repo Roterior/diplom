@@ -96,14 +96,15 @@
     <Compile Include="src\back\service\impl\OrderRepairServiceImpl.cs" />
     <Compile Include="src\back\service\ICarNewService.cs" />
     <Compile Include="src\back\service\impl\CarNewServiceImpl.cs" />
-    <Compile Include="src\back\context\Context.cs" />
-    <Compile Include="src\back\interfaces\ICrudService.cs" />
-    <Compile Include="src\back\exception\EntityNotFoundException.cs" />
+    <Compile Include="src\back\utils\context\Context.cs" />
+    <Compile Include="src\back\utils\interfaces\ICrudService.cs" />
+    <Compile Include="src\back\utils\exception\EntityNotFoundException.cs" />
     <Compile Include="src\back\entity\Client.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\back\dto\Order.cs" />
     <Compile Include="src\back\service\IOrderRepairService.cs" />
+    <Compile Include="src\back\utils\view\TableBuilder.cs" />
     <Compile Include="src\front\forms\AddNewCar.cs">
       <SubType>Form</SubType>
     </Compile>

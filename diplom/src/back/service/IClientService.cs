@@ -1,6 +1,6 @@
 ﻿using diplom.src.back.dto;
 using diplom.src.back.entity;
-using diplom.src.back.interfaces;
+using diplom.src.back.utils.interfaces;
 using System;
 using System.Collections.Generic;
 

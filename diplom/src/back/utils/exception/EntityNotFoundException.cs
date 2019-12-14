@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace diplom.src.back.exception
+namespace diplom.src.back.utils.exception
 {
     internal class EntityNotFoundException : SystemException
     {

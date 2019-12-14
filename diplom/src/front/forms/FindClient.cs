@@ -1,5 +1,5 @@
 ﻿using diplom.src.back.dto;
-using diplom.src.back.exception;
+using diplom.src.back.utils.exception;
 using diplom.src.back.service;
 using diplom.src.back.service.impl;
 using diplom.src.forms;

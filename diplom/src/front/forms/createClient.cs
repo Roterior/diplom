@@ -52,7 +52,7 @@ namespace diplom.src.front.forms
                     ClientId = client.Id,
                     Maker = maker.Text,
                     Model = model.Text,
-                    ReleaseYear = int.Parse(releaseYear.Text),
+                    ReleaseYear = (releaseYear.Text != "") ? int.Parse(releaseYear.Text) : 0,
                     Description = description.Text
                 });
                 main.updateClientTable(new List<Client>(1) { client });

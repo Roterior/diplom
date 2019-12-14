@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using diplom.src.back.context;
+using diplom.src.back.utils.context;
 using diplom.src.back.entity;
 
 namespace diplom.src.back.service.impl

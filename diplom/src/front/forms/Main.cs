@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using diplom.src.front.forms;
 using diplom.src.back.entity;
+using diplom.src.back.utils.view;
+using System.Collections;
 
 namespace diplom.src.forms
 {
@@ -38,6 +40,9 @@ namespace diplom.src.forms
                             list.Add(new CurrentOrder { date = e.Timestamp, price = e.Price, type = "Покупка", id = e.Id }));
                     }
                 }
+                
+
+
                 int pages = list.Count > 0 ? list.Count / 8 + 1 : 1;
                 List<TabPage> tabPages = new List<TabPage>(pages);
                 for (int i = 0; i < pages; i++) {
@@ -89,6 +94,9 @@ namespace diplom.src.forms
                     pagesOrder[tabControl1.TabPages.IndexOf(page)].ForEach(order =>
                         ((DataGridView)page.Controls[0]).Rows.Add(
                             String.Format("{0:dd/MM/yyyy}", order.date.GetValueOrDefault()), order.price, order.type)));
+
+
+
                 if (client.OrderBuyList != null && client.OrderBuyList.Count > 0)
                 {
                     if (currentOrderInfo == null)
@@ -163,66 +171,14 @@ namespace diplom.src.forms
             this.clients = clients;
             try
             {
-                for (int i = 0; i < tabControl2.TabPages.Count; i++)
+                List<string> tableColumns = new List<string>(3) { "FirstName", "LastName", "Inn" };
+                Dictionary<string, string> map = new Dictionary<string, string>(3)
                 {
-                    tabControl2.TabPages.Remove(tabControl2.TabPages[i]);
-                }
-                int pages = clients.Count / 8 + 1;
-                List<TabPage> tabPages = new List<TabPage>(pages);
-                for (int i = 0; i < pages; i++)
-                {
-                    TabPage tabPage = new TabPage((i + 1).ToString());
-                    DataGridView dataGrid = new DataGridView();
-                    dataGrid.BorderStyle = BorderStyle.None;
-                    dataGrid.AllowUserToAddRows = false;
-                    dataGrid.AllowUserToDeleteRows = false;
-                    dataGrid.AllowUserToResizeRows = false;
-                    dataGrid.AllowUserToResizeColumns = false;
-                    dataGrid.AllowUserToDeleteRows = false;
-                    dataGrid.RowHeadersVisible = false;
-                    dataGrid.Dock = DockStyle.Fill;
-                    dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                    dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                    DataGridViewCell cell = new DataGridViewTextBoxCell();
-                    DataGridViewColumn column = new DataGridViewColumn(cell);
-                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    column.Frozen = false;
-                    column.HeaderText = "Фамилия";
-                    dataGrid.Columns.Add(column);
-                    dataGrid.Columns.Add("FirstName", "Имя");
-                    dataGrid.Columns.Add("Inn", "ИНН");
-                    dataGrid.ReadOnly = true;
-                    dataGrid.BackgroundColor = SystemColors.Control;
-                    dataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                    dataGrid.CellClick += new DataGridViewCellEventHandler(CellClickClient);
-                    dataGrid.Name = "dataGridView" + (i + 1);
-                    tabPage.Controls.Add(dataGrid);
-                    tabPage.BackColor = Color.Transparent;
-                    tabControl2.TabPages.Add(tabPage);
-                    tabPages.Add(tabPage);
-                }
-                List<List<Client>> pagesOrder = new List<List<Client>>(pages);
-                for (int i = 0; i < pagesOrder.Capacity; i++)
-                {
-                    pagesOrder.Add(new List<Client>(8));
-                }
-                pagesOrder.ForEach(page =>
-                {
-                    int start = pagesOrder.IndexOf(page) * 8;
-                    for (int i = start; i < start + 8; i++)
-                    {
-                        if (i >= clients.Count) break;
-                        page.Add(clients[i]);
-                    }
-                });
-
-                tabPages.ForEach(page =>
-                {
-                    pagesOrder[tabControl2.TabPages.IndexOf(page)].ForEach(client =>
-                    {
-                        ((DataGridView)page.Controls[0]).Rows.Add(client.LastName, client.FirstName, client.Inn);
-                    });
-                });
+                    ["LastName"] = "Фамилия",
+                    ["FirstName"] = "Имя",
+                    ["Inn"] = "Инн"
+                };
+                TableBuilder.BuildTable(clients, tabControl2, map, new DataGridViewCellEventHandler(CellClickClient));
                 if (clients != null && clients.Count > 0)
                 {
                     currentClient = clients[0];
@@ -236,13 +192,13 @@ namespace diplom.src.forms
                     updateClientOrders(currentClient);
                 }
             }
-            catch (NullReferenceException exception)
+            catch (NullReferenceException e)
             {
-                Console.WriteLine(exception.Message);
+                Console.WriteLine(e.Message);
             }
         }
 
-        private void CellClickClient(object sender, DataGridViewCellEventArgs e)
+        public void CellClickClient(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dataGrid = (DataGridView)sender;
             int page = int.Parse(dataGrid.Name.Substring("dataGridView".Length)) - 1;

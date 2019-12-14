@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using diplom.src.back.entity;
-using diplom.src.back.context;
+using diplom.src.back.utils.context;
 using diplom.src.back.dto;
 
 namespace diplom.src.back.service.impl
