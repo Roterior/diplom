@@ -70,6 +70,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xaml" />
@@ -105,6 +106,18 @@
     <Compile Include="src\back\dto\Order.cs" />
     <Compile Include="src\back\service\IOrderRepairService.cs" />
     <Compile Include="src\back\utils\view\TableBuilder.cs" />
+    <Compile Include="src\front\controls\UCCreateClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\front\controls\UCCreateClient.Designer.cs">
+      <DependentUpon>UCCreateClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\front\controls\UCSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\front\controls\UCSearch.Designer.cs">
+      <DependentUpon>UCSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\front\forms\AddNewCar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +168,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="src\front\controls\UCCreateClient.resx">
+      <DependentUpon>UCCreateClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\front\controls\UCSearch.resx">
+      <DependentUpon>UCSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\front\forms\AddNewCar.resx">
       <DependentUpon>AddNewCar.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +225,12 @@
     <None Include="Resources\close.png" />
     <None Include="Resources\minimize.png" />
     <None Include="Resources\wrench.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loupe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addUser.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

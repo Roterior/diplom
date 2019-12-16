@@ -6,8 +6,10 @@ using diplom.src.front.forms;
 using diplom.src.back.entity;
 using diplom.src.back.utils.view;
 using System.Collections;
+using diplom.src.front;
+using diplom.src.front.controls;
 
-namespace diplom.src.forms
+namespace diplom.src.front.forms
 {
     public partial class Main : Form
     {
@@ -247,11 +249,63 @@ namespace diplom.src.forms
 
         private class CurrentOrder
         {
+            public CurrentOrder() { }
             internal Guid id;
             internal DateTimeOffset? date;
             internal decimal? price;
             internal string type;
-            public CurrentOrder(){}
+        }
+
+        private void CallUserControl(object sender, EventArgs e)
+        {
+            panel4.Controls.Clear();
+            UCSearch uc = new UCSearch
+            {
+                Dock = DockStyle.Fill
+            };
+            panel4.Controls.Add(uc);
+        }
+
+        private void CallAddClientControl(object sender, EventArgs e)
+        {
+            panel4.Controls.Clear();
+            UCCreateClient uc = new UCCreateClient
+            {
+                Dock = DockStyle.Fill
+            };
+            panel4.Controls.Add(uc);
+        }
+
+        private void ChangeColorOnLeave(object sender, EventArgs e)
+        {
+            if (sender.GetType().Name.Equals("PictureBox"))
+            {
+                PictureBox pb = (PictureBox)sender;
+                pb.BackColor = Color.FromArgb(40, 47, 53);
+                _ = pb;
+            }
+        }
+
+        private void ChangeColorOnHover(object sender, MouseEventArgs e)
+        {
+            if (sender.GetType().Name.Equals("PictureBox"))
+            {
+                PictureBox pb = (PictureBox)sender;
+                switch (pb?.Name)
+                {
+                    case "pictureBox4":
+                        if (pb.BackColor != Color.FromArgb(140, 47, 53)) 
+                            pb.BackColor = Color.FromArgb(140, 47, 53);
+                        break;
+                    case "pictureBox1":
+                        if (pb.BackColor != Color.FromArgb(50, 57, 63)) 
+                            pb.BackColor = Color.FromArgb(50, 57, 63);
+                        break;
+                    default:
+                        break;
+                }
+                _ = pb;
+            }
         }
     }
 }

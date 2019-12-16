@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace diplom.src.forms
+namespace diplom.src.front.forms
 {
     partial class Main : Form
     {
@@ -70,6 +70,15 @@ namespace diplom.src.forms
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -79,6 +88,13 @@ namespace diplom.src.forms
             this.tabControl2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -95,7 +111,7 @@ namespace diplom.src.forms
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStrip1.Size = new System.Drawing.Size(750, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1379, 27);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragOnMouseDown);
             this.toolStrip1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragOnMouseMove);
@@ -212,9 +228,11 @@ namespace diplom.src.forms
             this.groupBox1.Controls.Add(this.lname);
             this.groupBox1.Controls.Add(this.address);
             this.groupBox1.Controls.Add(this.fname);
-            this.groupBox1.Location = new System.Drawing.Point(12, 28);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Teal;
+            this.groupBox1.Location = new System.Drawing.Point(187, 108);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(240, 151);
+            this.groupBox1.Size = new System.Drawing.Size(273, 151);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Данные клиента";
@@ -235,7 +253,7 @@ namespace diplom.src.forms
             this.inn.AutoSize = true;
             this.inn.Location = new System.Drawing.Point(6, 80);
             this.inn.Name = "inn";
-            this.inn.Size = new System.Drawing.Size(34, 13);
+            this.inn.Size = new System.Drawing.Size(38, 13);
             this.inn.TabIndex = 1;
             this.inn.Text = "ИНН:";
             // 
@@ -255,7 +273,7 @@ namespace diplom.src.forms
             this.lname.AutoSize = true;
             this.lname.Location = new System.Drawing.Point(6, 20);
             this.lname.Name = "lname";
-            this.lname.Size = new System.Drawing.Size(59, 13);
+            this.lname.Size = new System.Drawing.Size(67, 13);
             this.lname.TabIndex = 0;
             this.lname.Text = "Фамилия:";
             // 
@@ -282,10 +300,10 @@ namespace diplom.src.forms
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(507, 44);
+            this.tabControl1.Location = new System.Drawing.Point(470, 283);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(233, 336);
+            this.tabControl1.Size = new System.Drawing.Size(240, 336);
             this.tabControl1.TabIndex = 11;
             // 
             // tabPage1
@@ -295,7 +313,7 @@ namespace diplom.src.forms
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(225, 310);
+            this.tabPage1.Size = new System.Drawing.Size(232, 310);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "1";
             // 
@@ -319,7 +337,7 @@ namespace diplom.src.forms
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(219, 304);
+            this.dataGridView1.Size = new System.Drawing.Size(226, 304);
             this.dataGridView1.TabIndex = 0;
             // 
             // date
@@ -348,7 +366,8 @@ namespace diplom.src.forms
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(504, 28);
+            this.label7.ForeColor = System.Drawing.Color.Teal;
+            this.label7.Location = new System.Drawing.Point(476, 262);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 2;
@@ -361,9 +380,10 @@ namespace diplom.src.forms
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.textBox3);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(12, 185);
+            this.groupBox3.ForeColor = System.Drawing.Color.Teal;
+            this.groupBox3.Location = new System.Drawing.Point(470, 108);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(240, 195);
+            this.groupBox3.Size = new System.Drawing.Size(240, 151);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Данные заказа";
@@ -397,13 +417,14 @@ namespace diplom.src.forms
             // 
             // textBox3
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(54)))), ((int)(((byte)(64)))));
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox3.ForeColor = System.Drawing.Color.Teal;
             this.textBox3.Location = new System.Drawing.Point(6, 100);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(227, 88);
+            this.textBox3.Size = new System.Drawing.Size(227, 45);
             this.textBox3.TabIndex = 1;
             // 
             // label8
@@ -418,7 +439,8 @@ namespace diplom.src.forms
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(255, 28);
+            this.label13.ForeColor = System.Drawing.Color.Teal;
+            this.label13.Location = new System.Drawing.Point(193, 262);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 13;
@@ -427,10 +449,10 @@ namespace diplom.src.forms
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage2);
-            this.tabControl2.Location = new System.Drawing.Point(258, 44);
+            this.tabControl2.Location = new System.Drawing.Point(187, 283);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(243, 336);
+            this.tabControl2.Size = new System.Drawing.Size(273, 336);
             this.tabControl2.TabIndex = 14;
             // 
             // tabPage2
@@ -440,7 +462,7 @@ namespace diplom.src.forms
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(235, 310);
+            this.tabPage2.Size = new System.Drawing.Size(265, 310);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "1";
             // 
@@ -464,7 +486,7 @@ namespace diplom.src.forms
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(229, 304);
+            this.dataGridView2.Size = new System.Drawing.Size(259, 304);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClickClient);
             // 
@@ -495,10 +517,134 @@ namespace diplom.src.forms
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(47)))), ((int)(((byte)(53)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pictureBox3);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 27);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(181, 605);
+            this.panel1.TabIndex = 15;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(121)))), ((int)(((byte)(120)))));
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox3.Image = global::diplom.Properties.Resources.addUser;
+            this.pictureBox3.Location = new System.Drawing.Point(-1, 140);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(181, 52);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.CallAddClientControl);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(121)))), ((int)(((byte)(120)))));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = global::diplom.Properties.Resources.loupe;
+            this.pictureBox2.Location = new System.Drawing.Point(-1, 74);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(181, 52);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.CallUserControl);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(179, 49);
+            this.panel3.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(180, 49);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nord Auto";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChangeColorOnHover);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(1093, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(56, 29);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.MinimizeBtn);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.ChangeColorOnLeave);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChangeColorOnHover);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(47)))), ((int)(((byte)(53)))));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.pictureBox4);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(181, 27);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1198, 50);
+            this.panel2.TabIndex = 16;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.InitialImage = null;
+            this.pictureBox4.Location = new System.Drawing.Point(1148, -1);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(49, 29);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 2;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.CloseBtn);
+            this.pictureBox4.MouseLeave += new System.EventHandler(this.ChangeColorOnLeave);
+            this.pictureBox4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChangeColorOnHover);
+            // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Location = new System.Drawing.Point(774, 188);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(605, 444);
+            this.panel4.TabIndex = 17;
+            // 
             // Main
             // 
-            this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(750, 384);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(54)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(1379, 632);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.groupBox3);
@@ -522,6 +668,13 @@ namespace diplom.src.forms
             this.tabControl2.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -567,5 +720,14 @@ namespace diplom.src.forms
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn Column3;
+        private Panel panel1;
+        private PictureBox pictureBox1;
+        private Panel panel3;
+        private Label label1;
+        private Panel panel2;
+        private PictureBox pictureBox2;
+        private Panel panel4;
+        private PictureBox pictureBox3;
+        private PictureBox pictureBox4;
     }
 }

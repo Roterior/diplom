@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using diplom.src.back.entity;
 using diplom.src.back.service;
 using diplom.src.back.service.impl;
-using diplom.src.forms;
 
 namespace diplom.src.front.forms
 {
